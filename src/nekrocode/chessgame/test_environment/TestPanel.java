@@ -13,11 +13,11 @@ public class TestPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public TestPanel() {
-		ChessboardBuilder builder = new ChessboardBuilder();
-		Chessboard board = builder.buildBoard(ChessColors.LIGHT);
+//		ChessboardBuilder builder = new ChessboardBuilder();
+//		Chessboard board = builder.buildBoard(ChessColors.LIGHT);
 //		//Chessboard board = builder.buildBoard(ChessColors.DARK);
-		add(new ChessboardPanel(board));
-		//FenNotationParser p = new FenNotationParser();
+//		add(new ChessboardPanel(board));
+		FenNotationParser p = new FenNotationParser();
 	}
 	
 }

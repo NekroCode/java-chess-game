@@ -28,7 +28,7 @@ public class GuiBuilder {
 		frame.setContentPane(new TestPanel());
 		frame.pack();
 		frame.setVisible(true);
-		//System.exit(0);
+		System.exit(0);
 	}
 	
 }

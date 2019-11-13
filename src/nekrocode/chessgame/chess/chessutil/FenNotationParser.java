@@ -18,7 +18,7 @@ public class FenNotationParser {
 		String notation = "rn2kbnr/pp6/8/8/8/8/6PP/RNBQKBNR";
 		HashMap<Chesspiece, String> boardPosition = parseNotation(notation);
 		for (Map.Entry<Chesspiece, String> entry : boardPosition.entrySet()) {
-			System.out.println(entry.getKey().getClass().toString() + " : " + entry.getValue());
+			System.out.println(entry.getKey().toString() + " : " + entry.getValue());
 		}
 		
 	}

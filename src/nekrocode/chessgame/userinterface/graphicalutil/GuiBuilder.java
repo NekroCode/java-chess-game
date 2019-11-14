@@ -1,10 +1,11 @@
-package nekrocode.chessgame.userinterface;
+package nekrocode.chessgame.userinterface.graphicalutil;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import nekrocode.chessgame.test_environment.TestPanel;
+import nekrocode.chessgame.userinterface.MyMenuBar;
 
 /**
  * A separate class for drawing the graphical user interface is made so the non-static method
@@ -28,8 +29,8 @@ public class GuiBuilder {
 		//frame.setContentPane(new MainMenuPanel());
 		frame.setContentPane(new TestPanel());
 		frame.pack();
-		frame.setVisible(true);
-		//System.exit(0);
+		//frame.setVisible(true);
+		System.exit(0);
 	}
 	
 }

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.ChessColors;
 import nekrocode.chessgame.chess.chessboard.Square;
+import nekrocode.chessgame.chess.visualrepresentations.util.ChessboardConfig;
 
 public class SquarePanel extends JPanel {
 

@@ -20,8 +20,7 @@ import nekrocode.chessgame.util.Utility;
 public class FenNotationParser {
 	
 	public FenNotationParser() {
-		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-		HashMap<Chesspiece, String> boardPosition = parsePosition(position);
+		
 	}
 
 	public HashMap<Chesspiece, String> parsePosition(String position) {

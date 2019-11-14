@@ -2,7 +2,7 @@ package nekrocode.chessgame.app;
 
 import javax.swing.SwingUtilities;
 
-import nekrocode.chessgame.userinterface.GuiBuilder;
+import nekrocode.chessgame.userinterface.graphicalutil.GuiBuilder;
 
 public class JavaChessGame {
 

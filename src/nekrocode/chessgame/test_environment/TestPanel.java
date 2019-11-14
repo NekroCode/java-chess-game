@@ -1,10 +1,18 @@
 package nekrocode.chessgame.test_environment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.ChessColors;
 import nekrocode.chessgame.chess.chessboard.Chessboard;
 import nekrocode.chessgame.chess.chessboard.ChessboardBuilder;
+import nekrocode.chessgame.chess.chessboard.IllegalSquareException;
+import nekrocode.chessgame.chess.chessboard.Square;
+import nekrocode.chessgame.chess.chesspieces.Chesspiece;
+import nekrocode.chessgame.chess.chessutil.FenNotationParser;
+import nekrocode.chessgame.chess.chessutil.SquareSearcher;
 import nekrocode.chessgame.chess.visualrepresentations.ChessboardPanel;
 
 public class TestPanel extends JPanel {
@@ -16,7 +24,12 @@ public class TestPanel extends JPanel {
 		Chessboard board = builder.buildBoard(ChessColors.LIGHT);
 //		//Chessboard board = builder.buildBoard(ChessColors.DARK);
 		add(new ChessboardPanel(board));
-		//FenNotationParser p = new FenNotationParser();
+		
+		FenNotationParser parser = new FenNotationParser();
+		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+		HashMap<Chesspiece, String> boardPosition = parser.parsePosition(position);
+		for (Map.Entry<Chesspiece, String> entry : boardPosition.entrySet())
+			System.out.println(entry);
 	}
 	
 }

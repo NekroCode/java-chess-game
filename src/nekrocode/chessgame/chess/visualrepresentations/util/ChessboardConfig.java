@@ -1,4 +1,4 @@
-package nekrocode.chessgame.chess.visualrepresentations;
+package nekrocode.chessgame.chess.visualrepresentations.util;
 
 import java.awt.Color;
 import java.util.Arrays;

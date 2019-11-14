@@ -15,4 +15,7 @@ public class MyMenuBar extends JMenuBar {
 		add(helpMenu);
 	}
 	
+	// Credits to:
+	//
+	// Bill Harvey for the chess puzzles: http://wtharvey.com
 }

@@ -33,6 +33,8 @@ public class TestPanel extends JPanel {
 		ChessboardPanel boardPanel = board.getChessboardPanel();
 		add(boardPanel);
 		
+		// TODO This logic will do its thing elsewhere at a later point.
+		// Currently it's just here to demo the functionality
 		FenNotationParser parser = new FenNotationParser();
 		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 		HashMap<Chesspiece, String> boardPosition = parser.parsePosition(position);
@@ -40,7 +42,6 @@ public class TestPanel extends JPanel {
 		SquareSearcher searcher = new SquareSearcher(board.getSquares());
 		int rankIndex = 0;
 		int fileIndex = 0;
-		int totalRanks = Chessboard.getTotalRanks();
 		for (Map.Entry<Chesspiece, String> entry : boardPosition.entrySet()) {
 			entry.getKey().initVisualComponent();
 			fileIndex = searcher.getFileIndex(entry.getValue().charAt(0));

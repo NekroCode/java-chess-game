@@ -16,8 +16,8 @@ import nekrocode.chessgame.userinterface.MyMenuBar;
 public class GuiBuilder {
 	
 	public GuiBuilder() {
-		try { UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel" );} 
-			catch(Exception e) {}
+//		try { UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel" );} 
+//			catch(Exception e) {}
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Nekro's Chess Application");

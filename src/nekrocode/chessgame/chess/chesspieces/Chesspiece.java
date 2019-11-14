@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nekrocode.chessgame.chess.ChessColors;
 import nekrocode.chessgame.chess.chessboard.Square;
+import nekrocode.chessgame.chess.visualrepresentations.ChesspiecePanel;
 
 public abstract class Chesspiece {
 	
@@ -13,6 +14,7 @@ public abstract class Chesspiece {
 	protected boolean isPinned, isAttacked;
 	protected Square position;
 	protected ArrayList<Square> legalSquares;
+	protected ChesspiecePanel chesspiecePanel;
 	
 	public Chesspiece(String name, char letter, ChessColors color) {
 		this.name = name;
@@ -20,27 +22,39 @@ public abstract class Chesspiece {
 		this.color = color;
 	}
 	
-	protected char getLetter() {
+	public char getLetter() {
 		return letter;
 	}
 	
-	protected ChessColors getColor() {
+	public ChessColors getColor() {
 		return color;
 	}
 	
-	protected boolean isPinned() {
+	public boolean isPinned() {
 		return isPinned;
 	}
 	
-	protected boolean isAttacked() {
+	public boolean isAttacked() {
 		return isAttacked;
 	}
 	
-	protected Square getPosition() {
+	public Square getPosition() {
 		return position;
 	}
 	
-	protected ArrayList<Square> getLegalSquares() {
+	public ArrayList<Square> getLegalSquares() {
 		return legalSquares;
+	}
+	
+	public String toString() {
+		return name;
+	}
+	
+	public void initVisualComponent() {
+		chesspiecePanel = new ChesspiecePanel(this);
+	}
+	
+	public ChesspiecePanel getChesspiecePanel() {
+		return chesspiecePanel;
 	}
 }

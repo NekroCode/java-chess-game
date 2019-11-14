@@ -5,13 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 import nekrocode.chessgame.chess.ChessColors;
+import nekrocode.chessgame.chess.visualrepresentations.ChessboardPanel;
 
+// TODO Need a better system to initialize its graphical components.
 public class Chessboard {
 	
 	private static final int totalRanks = 8;
 	private static final int totalFiles = totalRanks;
 	private final List<List<Square>> squares;
 	private ChessColors orientation;
+	private ChessboardPanel chessboardPanel;
 	
 	public Chessboard(List<List<Square>> squares, ChessColors orientation) {
 		this.squares = squares;
@@ -38,6 +41,14 @@ public class Chessboard {
 	
 	public static int getTotalFiles() {
 		return totalFiles;
+	}
+	
+	public void initVisualComponents() {
+		chessboardPanel = new ChessboardPanel(this);
+	}
+	
+	public ChessboardPanel getChessboardPanel() {
+		return chessboardPanel;
 	}
 	
 }

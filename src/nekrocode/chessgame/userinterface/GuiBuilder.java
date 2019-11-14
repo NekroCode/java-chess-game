@@ -21,14 +21,15 @@ public class GuiBuilder {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Nekro's Chess Application");
 		// TODO Look into better ways of loading the image?
-		try { frame.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("/res/imgs/icons/app_icon.png")).getImage()); } 
+		// Don't forget to also change the image and its dimension
+		try { frame.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("imgs/icons/app_icon.png")).getImage()); } 
 			catch (NullPointerException e) {}
 		frame.setJMenuBar(new MyMenuBar());
 		//frame.setContentPane(new MainMenuPanel());
 		frame.setContentPane(new TestPanel());
 		frame.pack();
 		frame.setVisible(true);
-		System.exit(0);
+		//System.exit(0);
 	}
 	
 }

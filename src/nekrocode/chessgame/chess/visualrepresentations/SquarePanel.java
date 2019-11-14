@@ -17,7 +17,8 @@ public class SquarePanel extends JPanel {
 	public SquarePanel(Square square) {
 		setLayout(new GridLayout(1,1));
 		setBackground(getColor(square));
-		add(new JLabel(square.toString()));
+		//add(new JLabel(square.toString()));
+		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
 	}
 	

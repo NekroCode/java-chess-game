@@ -5,11 +5,11 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
-public class ChessboardContainer extends JPanel {
+public class ChessboardView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	public ChessboardContainer() {
+	public ChessboardView() {
 		GridBagLayout gridBag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		setLayout(gridBag);

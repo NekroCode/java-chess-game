@@ -58,4 +58,8 @@ public class ChessboardPanel extends JPanel {
 		return squarePanels;
 	}
 	
+	public List<List<SquarePanel>> getSquarePanels() {
+		return squarePanels;
+	}
+	
 }

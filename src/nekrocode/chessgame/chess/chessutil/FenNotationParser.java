@@ -1,7 +1,6 @@
 package nekrocode.chessgame.chess.chessutil;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import nekrocode.chessgame.chess.ChessColors;
 import nekrocode.chessgame.chess.chessboard.Chessboard;
@@ -10,21 +9,23 @@ import nekrocode.chessgame.chess.chesspieces.ChesspieceCreator;
 import nekrocode.chessgame.util.Utility;
 
 // TODO Want to refactor this code to something more composition based rather
-// than the current 'pipeline' setup
+// than the current 'pipeline' setup.
+//
+// TODO Include the remaining notation elements.
+//
+// TODO May want to include Exception Handling to protect against incorrect formats
+//
+// TODO Do I want to return a square as String or as Square object?
+// I think as String.
 public class FenNotationParser {
 	
 	public FenNotationParser() {
-		//String notation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-		String notation = "rn2kbnr/pp6/8/8/8/8/6PP/RNBQKBNR";
-		HashMap<Chesspiece, String> boardPosition = parseNotation(notation);
-		for (Map.Entry<Chesspiece, String> entry : boardPosition.entrySet()) {
-			System.out.println(entry.getKey().toString() + " : " + entry.getValue());
-		}
-		
+		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+		HashMap<Chesspiece, String> boardPosition = parsePosition(position);
 	}
 
-	public HashMap<Chesspiece, String> parseNotation(String notation) {
-		String[] list = splitNotation(notation);
+	public HashMap<Chesspiece, String> parsePosition(String position) {
+		String[] list = splitNotation(position);
 		int rankIndex = list.length-1;
 		HashMap<Chesspiece, String> hashMap = new HashMap<Chesspiece, String>();
 		for (int i = rankIndex; i >= 0; i--) {

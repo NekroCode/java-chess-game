@@ -44,7 +44,7 @@ public class TestPanel extends JPanel {
 		for (Map.Entry<Chesspiece, String> entry : boardPosition.entrySet()) {
 			entry.getKey().initVisualComponent();
 			fileIndex = searcher.getFileIndex(entry.getValue().charAt(0));
-			rankIndex = 8 - Integer.parseInt(entry.getValue().substring(1, 2));
+			rankIndex = searcher.getRankIndex(Integer.parseInt(entry.getValue().substring(1, 2)));
 			Square square = null;
 			SquarePanel squarePanel = null;
 			try {

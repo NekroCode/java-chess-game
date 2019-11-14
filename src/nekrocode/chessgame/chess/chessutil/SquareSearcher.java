@@ -51,8 +51,7 @@ public class SquareSearcher {
 		if (!validateRank(rankIndex))
 			throw new IllegalSquareException("Illegal Rank");
 		
-		int totalRanks = Chessboard.getTotalRanks();
-		return squares.get(totalRanks-rankIndex).get(fileIndex);
+		return squares.get(getRankIndex(rankIndex)).get(fileIndex);
 	}
 	
 	// TODO Add logic if needed
@@ -62,6 +61,10 @@ public class SquareSearcher {
 	
 	public int getFileIndex(Character file) {
 		return findFileIndex(file, Chessboard.getFileLetters());
+	}
+	
+	public int getRankIndex(int rank) {
+		return Chessboard.getTotalRanks() - rank;
 	}
 	
 	// TODO Maybe refactor this method to something more global?

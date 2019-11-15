@@ -22,16 +22,16 @@ public class FenNotationParser {
 	public FenNotationParser() {
 		
 	}
-
+	
+	// TODO Fix the for loop
 	public HashMap<Chesspiece, String> parsePosition(String position) {
 		String[] list = splitNotation(position);
-		int rankIndex = list.length-1;
 		HashMap<Chesspiece, String> hashMap = new HashMap<Chesspiece, String>();
-		for (int i = rankIndex; i >= 0; i--) {
-			int indexFromStart = i-i;
-			String object = list[i].substring(indexFromStart, (indexFromStart)+1);
+		int ranks = list.length;
+		for (int i = 0; i < ranks; i++) {
+			String object = list[i].substring(0, 1);
 			if (!rowIsEmpty(object))
-				processRank(list[i], i+1, hashMap);
+				processRank(list[i], ranks-i, hashMap);
 		}
 		return hashMap;
 	}
@@ -65,7 +65,7 @@ public class FenNotationParser {
 	}
 	
 	private ChessColors getColor(char letter) {
-		if (Character.isLowerCase(letter))
+		if (Character.isUpperCase(letter))
 			return ChessColors.LIGHT;
 		else
 			return ChessColors.DARK;

@@ -43,7 +43,7 @@ public class Chessboard {
 		return totalFiles;
 	}
 	
-	public void initVisualComponents() {
+	public void initVisualComponent() {
 		chessboardPanel = new ChessboardPanel(this);
 	}
 	

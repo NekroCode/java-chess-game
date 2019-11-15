@@ -10,7 +10,7 @@ public class MyMenuBar extends JMenuBar {
 	
 	public MyMenuBar() {
 		JMenu helpMenu = new JMenu("Help");
-		JMenuItem about = new JMenuItem("about");
+		JMenuItem about = new JMenuItem("About");
 		helpMenu.add(about);
 		add(helpMenu);
 	}

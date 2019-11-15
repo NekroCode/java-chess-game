@@ -15,26 +15,6 @@ public class SquareSearcher {
 		this.squares = squares;
 	}
 	
-//	// TODO Separate logic into different methods?
-//	public Square getSquare(String name) throws IllegalSquareException {
-//		Character file = name.charAt(0);
-//		int fileIndex = findFileIndex(file, Chessboard.getFileLetters());
-//		if (fileIndex == -1)
-//			throw new IllegalSquareException("Illegal file");
-//		
-//		String rank = name.substring(1, 2);
-//		int rankIndex = 0;
-//		if (!Utility.isInteger(rank))
-//			throw new IllegalSquareException("Illegal Rank");
-//		else
-//			rankIndex = Integer.parseInt(rank);
-//		if (!validateRank(rankIndex))
-//			throw new IllegalSquareException("Illegal Rank");
-//		
-//		int totalRanks = Chessboard.getTotalRanks();
-//		return squares.get(totalRanks-rankIndex).get(fileIndex);
-//	}
-	
 	// TODO Separate logic into different methods?
 	public Square getSquare(String name) throws IllegalSquareException {
 		//int fileIndex = findFileIndex(name.charAt(0), Chessboard.getFileLetters());

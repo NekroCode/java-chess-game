@@ -29,7 +29,7 @@ public class TestPanel extends JPanel {
 		ChessboardBuilder builder = new ChessboardBuilder();
 		Chessboard board = builder.buildBoard(ChessColors.LIGHT);
 		//Chessboard board = builder.buildBoard(ChessColors.DARK);
-		board.initVisualComponents();
+		board.initVisualComponent();
 		ChessboardPanel boardPanel = board.getChessboardPanel();
 		add(boardPanel);
 		
@@ -37,6 +37,7 @@ public class TestPanel extends JPanel {
 		// Currently it's just here to demo the functionality
 		FenNotationParser parser = new FenNotationParser();
 		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+		//String position = "r2qrb2/p1pn1Qp1/1p4Nk/4PR2/3n4/7N/P5PP/R6K";
 		HashMap<Chesspiece, String> boardPosition = parser.parsePosition(position);
 		ChesspieceAppender appender = new ChesspieceAppender();
 		SquareSearcher searcher = new SquareSearcher(board.getSquares());

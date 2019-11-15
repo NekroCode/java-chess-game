@@ -13,7 +13,7 @@ import nekrocode.chessgame.util.Utility;
 //
 // TODO Include the remaining notation elements.
 //
-// TODO May want to include Exception Handling to protect against incorrect formats
+// TODO Include Exception Handling to protect against incorrect formats
 //
 // TODO Do I want to return a square as String or as Square object?
 // I think as String.
@@ -23,7 +23,6 @@ public class FenNotationParser {
 		
 	}
 	
-	// TODO Fix the for loop
 	public HashMap<Chesspiece, String> parsePosition(String position) {
 		String[] list = splitNotation(position);
 		HashMap<Chesspiece, String> hashMap = new HashMap<Chesspiece, String>();

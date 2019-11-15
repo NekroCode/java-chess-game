@@ -10,6 +10,11 @@ import nekrocode.chessgame.chess.ChessColors;
 import nekrocode.chessgame.chess.chessboard.Chessboard;
 import nekrocode.chessgame.chess.chessboard.Square;
 
+// TODO Make this class less dependent by removing the chessboard paramater in the constructor.
+// Replace it for the properties it directly needs.
+// Although... at a later development stage I may need to know which chessboard this panel belongs to.
+// In that case i'll need to retain the dependency unless I want to write a different class packing both classes
+// together for easy acces to both.
 public class ChessboardPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

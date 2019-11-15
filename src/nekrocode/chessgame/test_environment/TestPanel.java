@@ -10,6 +10,7 @@ import nekrocode.chessgame.chess.chessboard.Chessboard;
 import nekrocode.chessgame.chess.chessboard.ChessboardBuilder;
 import nekrocode.chessgame.chess.chessboard.Square;
 import nekrocode.chessgame.chess.chesspieces.Chesspiece;
+import nekrocode.chessgame.chess.chesspieces.ChesspieceLetters;
 import nekrocode.chessgame.chess.chessutil.FenNotationParser;
 import nekrocode.chessgame.chess.chessutil.IllegalSquareException;
 import nekrocode.chessgame.chess.chessutil.SquareSearcher;
@@ -55,6 +56,7 @@ public class TestPanel extends JPanel {
 			} catch (IllegalSquareException e) {}
 			appender.appendPiece(entry.getKey(), squarePanel);
 		}
+			
 	}
 	
 }

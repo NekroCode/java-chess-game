@@ -1,5 +1,7 @@
 package nekrocode.chessgame.chess.chesspieces;
 
+// TODO Wondering of this ENUM is really needed
+// It's safer, sure...(compared to directly passing a char in a chesspiece its constructor) but is it still really needed?
 public enum ChesspieceLetters {
 	P('p'),
 	N('n'),

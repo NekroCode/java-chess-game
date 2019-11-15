@@ -9,21 +9,21 @@ import nekrocode.chessgame.chess.visualrepresentations.ChesspiecePanel;
 public abstract class Chesspiece {
 	
 	protected final String name;
-	protected final char letter;
+	protected final ChesspieceLetters letter;
 	protected final ChessColors color;
 	protected boolean isPinned, isAttacked;
 	protected Square position;
 	protected ArrayList<Square> legalSquares;
 	protected ChesspiecePanel chesspiecePanel;
 	
-	public Chesspiece(String name, char letter, ChessColors color) {
+	public Chesspiece(String name, ChesspieceLetters letter, ChessColors color) {
 		this.name = name;
 		this.letter = letter;
 		this.color = color;
 	}
 	
 	public char getLetter() {
-		return letter;
+		return letter.getLetter();
 	}
 	
 	public ChessColors getColor() {

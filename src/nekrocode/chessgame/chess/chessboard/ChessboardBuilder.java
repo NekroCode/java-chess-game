@@ -11,7 +11,7 @@ public class ChessboardBuilder {
 	private List<List<Square>> squares;
 	
 	public ChessboardBuilder() {
-		int totalRanks = Chessboard.getTotalRanks();
+		int totalRanks = Chessboard.TOTAL_RANKS;
 		int rankNumber = totalRanks;
 		List<Character> letters = Chessboard.getFileLetters();
 		squares = new ArrayList<List<Square>>();

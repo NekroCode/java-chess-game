@@ -17,7 +17,7 @@ public class ChessboardPanel extends JPanel {
 	private List<List<SquarePanel>> squarePanels;
 	
 	public ChessboardPanel(Chessboard chessboard) {
-		setLayout(new GridLayout(Chessboard.getTotalRanks(), Chessboard.getTotalFiles()));
+		setLayout(new GridLayout(Chessboard.TOTAL_RANKS, Chessboard.TOTAL_FILES));
 		ChessColors orientation = chessboard.getOrientation();
 		squarePanels = createSquarePanels(chessboard.getSquares());
 		if (orientation == ChessColors.LIGHT)

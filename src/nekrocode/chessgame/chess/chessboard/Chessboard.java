@@ -10,8 +10,8 @@ import nekrocode.chessgame.chess.visualrepresentations.ChessboardPanel;
 // TODO Need a better system to initialize its graphical components.
 public class Chessboard {
 	
-	private static final int totalRanks = 8;
-	private static final int totalFiles = totalRanks;
+	public static final int TOTAL_RANKS = 8;
+	public static final int TOTAL_FILES = TOTAL_RANKS;
 	private final List<List<Square>> squares;
 	private ChessColors orientation;
 	private ChessboardPanel chessboardPanel;
@@ -33,14 +33,6 @@ public class Chessboard {
 	// TODO immutable array
 	public static List<Character> getFileLetters() {
 		return Collections.unmodifiableList(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'));
-	}
-	
-	public static int getTotalRanks() {
-		return totalRanks;
-	}
-	
-	public static int getTotalFiles() {
-		return totalFiles;
 	}
 	
 	public void initVisualComponent() {

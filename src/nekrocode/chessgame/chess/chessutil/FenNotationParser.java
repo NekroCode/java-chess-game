@@ -5,7 +5,12 @@ import java.util.HashMap;
 import nekrocode.chessgame.chess.ChessColors;
 import nekrocode.chessgame.chess.chessboard.Chessboard;
 import nekrocode.chessgame.chess.chesspieces.Chesspiece;
-import nekrocode.chessgame.chess.chesspieces.ChesspieceCreator;
+import nekrocode.chessgame.chess.chesspieces.pieces.Bishop;
+import nekrocode.chessgame.chess.chesspieces.pieces.King;
+import nekrocode.chessgame.chess.chesspieces.pieces.Knight;
+import nekrocode.chessgame.chess.chesspieces.pieces.Pawn;
+import nekrocode.chessgame.chess.chesspieces.pieces.Queen;
+import nekrocode.chessgame.chess.chesspieces.pieces.Rook;
 import nekrocode.chessgame.util.Utility;
 
 // TODO Want to refactor this code to something more composition based rather
@@ -47,12 +52,10 @@ public class FenNotationParser {
 			else {
 				color = getColor(object.charAt(0));
 				String square = Chessboard.getFileLetters().get(columnIndex) + "" + rank;
-				//System.out.println(getChesspiece(object.toLowerCase(), color) + ": " + i);
 				hashMap.put(getChesspiece(object.toLowerCase(), color), square);
 				columnIndex++;
 			}
 		}
-		//System.out.println("----------");
 		return hashMap;
 	}
 	
@@ -79,20 +82,19 @@ public class FenNotationParser {
 	
 	// TODO Change data type to Enum for extra safety?
 	private Chesspiece getChesspiece(String letter, ChessColors color) {
-		ChesspieceCreator creator = new ChesspieceCreator();
 		switch (letter) {
 			case "p" :
-				return creator.createPawn(color);
+				return new Pawn(color);
 			case "n" :
-				return creator.createKnight(color);
+				return new Knight(color);
 			case "b" :
-				return creator.createBishop(color);
+				return new Bishop(color);
 			case "r" :
-				return creator.createRook(color);
+				return new Rook(color);
 			case "q" :
-				return creator.createQueen(color);
+				return new Queen(color);
 			case "k" : 
-				return creator.createKing(color);
+				return new King(color);
 
 //			Java 12's Case Label preview feature
 //			case "p" -> creator.createPawn(color);

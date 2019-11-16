@@ -8,7 +8,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import nekrocode.chessgame.chess.ChessColors;
+import nekrocode.chessgame.chess.ChessColor;
 import nekrocode.chessgame.chess.chesspieces.Chesspiece;
 
 public class ChesspiecePanel extends JPanel {
@@ -32,10 +32,11 @@ public class ChesspiecePanel extends JPanel {
 	private String getImageURLAsString(Chesspiece chesspiece) {
 		String url = "imgs/" + chesspiece.toString().toLowerCase();;
 		String color;
-		if (chesspiece.getColor() == ChessColors.LIGHT)
+		if (chesspiece.getColor() == ChessColor.LIGHT) {
 			color = "white";
-		else 
+		} else { 
 			color = "black";
+		}
 		return url = url.concat("_" + color + ".png");
 	}
 	

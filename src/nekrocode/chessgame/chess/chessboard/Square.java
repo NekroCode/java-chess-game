@@ -1,15 +1,15 @@
 package nekrocode.chessgame.chess.chessboard;
 
-import nekrocode.chessgame.chess.ChessColors;
+import nekrocode.chessgame.chess.ChessColor;
 
 // TODO May want to change the name to ChessboardSquare?
 public class Square {
 	
 	private final char letter;
 	private final int number;
-	private final ChessColors color;
+	private final ChessColor color;
 	
-	public Square(char letter, int number, ChessColors color) {
+	public Square(char letter, int number, ChessColor color) {
 		this.letter = letter;
 		this.number = number;
 		this.color = color;
@@ -23,7 +23,7 @@ public class Square {
 //		return letter + "" + number + " : color: " + color;
 //	}
 	
-	public ChessColors getColor() {
+	public ChessColor getColor() {
 		return color;
 	}
 	

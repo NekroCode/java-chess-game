@@ -18,13 +18,13 @@ public class GridBagAppender {
 		this.panel = panel;
 	}
 	
-	public void appendComponent(JComponent component, int gridx, int gridy, 
-													  int gridwidth, int gridheight) {
+	public void appendComponent(JComponent component, 
+								int gridx, int gridy, 
+								int gridwidth, int gridheight) {
 		gbc.gridx = gridx;
 		gbc.gridy = gridy;
 		gbc.gridwidth = gridwidth;
 		gbc.gridheight = gridheight;
-		
 		gridBag.setConstraints(component, gbc);
 		panel.add(component);
 	}

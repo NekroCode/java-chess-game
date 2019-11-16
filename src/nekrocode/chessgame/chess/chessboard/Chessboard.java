@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import nekrocode.chessgame.chess.ChessColors;
+import nekrocode.chessgame.chess.ChessColor;
 import nekrocode.chessgame.chess.visualrepresentations.ChessboardPanel;
 
 // TODO Need a better system to initialize its graphical components.
@@ -13,15 +13,15 @@ public class Chessboard {
 	public static final int TOTAL_RANKS = 8;
 	public static final int TOTAL_FILES = TOTAL_RANKS;
 	private final List<List<Square>> squares;
-	private ChessColors orientation;
+	private ChessColor orientation;
 	private ChessboardPanel chessboardPanel;
 	
-	public Chessboard(List<List<Square>> squares, ChessColors orientation) {
+	public Chessboard(List<List<Square>> squares, ChessColor orientation) {
 		this.squares = squares;
 		this.orientation = orientation;
 	}
 	
-	public ChessColors getOrientation() {
+	public ChessColor getOrientation() {
 		return orientation;
 	}
 	

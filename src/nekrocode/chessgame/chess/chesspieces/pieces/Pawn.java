@@ -1,13 +1,13 @@
 package nekrocode.chessgame.chess.chesspieces.pieces;
 
-import nekrocode.chessgame.chess.ChessColors;
+import nekrocode.chessgame.chess.ChessColor;
 import nekrocode.chessgame.chess.chesspieces.Chesspiece;
-import nekrocode.chessgame.chess.chesspieces.ChesspieceLetters;
+import nekrocode.chessgame.chess.chesspieces.ChesspieceLetter;
 
 public class Pawn extends Chesspiece {
 
-	public Pawn(ChessColors color) {
-		super("Pawn", ChesspieceLetters.P, color);
+	public Pawn(ChessColor color) {
+		super("Pawn", ChesspieceLetter.P, color);
 	}
 
 }

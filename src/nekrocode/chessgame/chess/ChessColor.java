@@ -1,6 +1,6 @@
 package nekrocode.chessgame.chess;
 
-public enum ChessColors {
+public enum ChessColor {
 	LIGHT,
 	DARK;
 }

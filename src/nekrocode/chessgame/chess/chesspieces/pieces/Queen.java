@@ -1,13 +1,13 @@
 package nekrocode.chessgame.chess.chesspieces.pieces;
 
-import nekrocode.chessgame.chess.ChessColors;
+import nekrocode.chessgame.chess.ChessColor;
 import nekrocode.chessgame.chess.chesspieces.Chesspiece;
-import nekrocode.chessgame.chess.chesspieces.ChesspieceLetters;
+import nekrocode.chessgame.chess.chesspieces.ChesspieceLetter;
 
 public class Queen extends Chesspiece {
 
-	public Queen(ChessColors color) {
-		super("Queen", ChesspieceLetters.Q, color);
+	public Queen(ChessColor color) {
+		super("Queen", ChesspieceLetter.Q, color);
 	}
 
 }

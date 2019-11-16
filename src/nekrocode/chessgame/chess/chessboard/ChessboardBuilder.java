@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import nekrocode.chessgame.chess.ChessColors;
+import nekrocode.chessgame.chess.ChessColor;
 
 public class ChessboardBuilder {
 	
@@ -15,7 +15,7 @@ public class ChessboardBuilder {
 		int rankNumber = totalRanks;
 		List<Character> letters = Chessboard.getFileLetters();
 		squares = new ArrayList<List<Square>>();
-		List<ChessColors> colors = getBoardColors();
+		List<ChessColor> colors = getBoardColors();
 		for (int i = 0; i < totalRanks; i++) {
 			squares.add(createBoardRow(letters,rankNumber, colors));
 			Collections.reverse(colors);
@@ -23,11 +23,11 @@ public class ChessboardBuilder {
 		}
 	}
 	
-	public Chessboard buildBoard(ChessColors orientation) {
+	public Chessboard buildBoard(ChessColor orientation) {
 		return new Chessboard(getSquares(), orientation);
 	}
 	
-	private List<Square> createBoardRow(List<Character> letters, int rankNumber, List<ChessColors> colors) {
+	private List<Square> createBoardRow(List<Character> letters, int rankNumber, List<ChessColor> colors) {
 		List<Square> row = new ArrayList<Square>();
 		int totalFiles = letters.size();
 		int colorIndex = 0;
@@ -35,17 +35,19 @@ public class ChessboardBuilder {
 		for (int i = 0; i < totalFiles; i++) {
 			row.add(new Square(letters.get(i), rankNumber, colors.get(colorIndex)));
 			colorIndex++;
-			if (colorIndex > 1)
+			if (colorIndex > 1) { 
 				colorIndex = 0;
+			}
 		}
 		
 		return row;
 	}
 	
-	private List<ChessColors> getBoardColors() {
-		List<ChessColors> colors = new ArrayList<ChessColors>();
-		for (ChessColors color : ChessColors.values())
+	private List<ChessColor> getBoardColors() {
+		List<ChessColor> colors = new ArrayList<ChessColor>();
+		for (ChessColor color : ChessColor.values()) {
 			colors.add(color);
+		}
 		return colors;
 	}
 	

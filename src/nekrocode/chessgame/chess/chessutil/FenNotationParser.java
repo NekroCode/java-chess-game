@@ -1,9 +1,6 @@
 package nekrocode.chessgame.chess.chessutil;
 
-import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import nekrocode.chessgame.chess.ChessColor;
 import nekrocode.chessgame.chess.chessboard.Chessboard;
@@ -27,8 +24,6 @@ import nekrocode.chessgame.util.Utility;
 // I think as String.
 public class FenNotationParser {
 	
-	// TODO Localise the (object-1)-x thing?
-	
 	public HashMap<Chesspiece, String> parsePosition(String position) throws FENFormatException {
 		try { 
 			validateFENFormat(position, true);
@@ -43,38 +38,53 @@ public class FenNotationParser {
 		if (temp == false) {
 			throw new FENFormatException("Incorrect FEN format.");
 		}
-			//throw new FENFormatException("Incorrect FEN Format. Missing slash separator between the ranks.");
 	}
 	
 	private HashMap<Chesspiece, String> getPositionAsHashMap(String[] positions) throws FENFormatException {
 		int ranks = positions.length;
 		HashMap<Chesspiece, String> boardPosition = new HashMap<Chesspiece, String>();
-		ChessColor color;
-		
 		for (int i = 0; i < ranks; i++) {
-			if (!rowIsEmpty(positions[i].substring(0, 1))) {
-				int length = positions[i].length();
-				int file = 0;
-				for (int x = 0; x < length; x++) {
-					String object = positions[i].substring(x, x+1);
-					if (Utility.isInteger(object)) {
-						file += Integer.parseInt(object);
-					} else {
-						color = getColor(object.charAt(0));
-						try {
-							Chesspiece chesspiece = getChesspiece(object, color);
-							String square = Chessboard.getFileLetters().get(file).toString() + (ranks-i);
-							System.out.println(square);
-							boardPosition.put(chesspiece, square);
-							file++;
-						} catch (ChesspieceException e) {
-							throw new FENFormatException(e.getMessage());
-						}
-					}
-				}
+			String position = positions[i];
+			if (!rowIsEmpty(position.substring(0, 1))) {
+				processRank(position, ranks-i, boardPosition);
 			}
 		}
 		return boardPosition;
+	}
+	
+	private void processRank(String position, int rank, HashMap<Chesspiece, String> boardPosition) throws FENFormatException {
+		int length = position.length();
+		int file = 0;
+		for (int i = 0; i < length; i++) {
+			String object = position.substring(i, i+1);
+			// TODO Integer.parseInt is invoked twice. Want to change this
+			if (Utility.isInteger(object)) {
+				file += Integer.parseInt(object);
+			} else {
+				file++;
+				try {
+					HashMap.Entry<Chesspiece, String> entry = getPositionAsMapEntry(object, rank, file);
+					boardPosition.put(entry.getKey(), entry.getValue());
+				} catch (FENFormatException e) {
+					throw new FENFormatException(e.getMessage());
+				}
+			}
+			if (file > Chessboard.TOTAL_RANKS) {
+				throw new FENFormatException("Exceeded total amounts of files.");
+			}
+		}
+	}
+	
+	private HashMap.Entry<Chesspiece, String> getPositionAsMapEntry(String letter, int rank, int file) throws FENFormatException {
+		ChessColor color = getColor(letter.charAt(0));
+		Chesspiece chesspiece = null;
+		try {
+			chesspiece = getChesspiece(letter, color);
+		} catch (ChesspieceException e) {
+			throw new FENFormatException(e.getMessage());
+		}
+		String square = Chessboard.getFileLetters().get(file-1).toString() + rank;
+		return new java.util.AbstractMap.SimpleEntry<Chesspiece, String>(chesspiece, square);
 	}
 	
 	// TODO I may want to refactor this method to something global if it turns
@@ -125,7 +135,7 @@ public class FenNotationParser {
 				break;
 		}
 		if (chesspiece == null) {
-			throw new ChesspieceException("Unknown chesspiece in notation.");
+			throw new ChesspieceException("Unknown chesspiece in notation. " + letter);
 		}
 		return chesspiece;
 //		Java 12's Case Label preview feature

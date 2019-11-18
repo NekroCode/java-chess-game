@@ -26,7 +26,7 @@ public class FenNotationParser {
 	
 	public HashMap<Chesspiece, String> parsePosition(String position) throws FENFormatException {
 		try { 
-			validateFENFormat(position, true);
+			validateFENFormat(position);
 			String[] positions = splitPosition(position);
 			return getPositionAsHashMap(positions);
 		} catch (FENFormatException e) {throw e;}	
@@ -34,8 +34,8 @@ public class FenNotationParser {
 	
 	// TODO Add regex
 	// Added boolean temp to simulate the functionality the regex should achieve
-	private void validateFENFormat(String position, boolean temp) throws FENFormatException {
-		if (temp == false) {
+	private void validateFENFormat(String position) throws FENFormatException {
+		if (!position.matches("([rnbqkpRNBQKP1-8]{1,8}/){7}([rnbqkpRNBQKP1-8]{1,8})")) {
 			throw new FENFormatException("Incorrect FEN format.");
 		}
 	}
@@ -62,15 +62,15 @@ public class FenNotationParser {
 				file += Integer.parseInt(object);
 			} else {
 				file++;
+				if (file > Chessboard.TOTAL_RANKS) {
+					throw new FENFormatException("Exceeded total amounts of files.");
+				}
 				try {
 					HashMap.Entry<Chesspiece, String> entry = getPositionAsMapEntry(object, rank, file);
 					boardPosition.put(entry.getKey(), entry.getValue());
 				} catch (FENFormatException e) {
 					throw new FENFormatException(e.getMessage());
 				}
-			}
-			if (file > Chessboard.TOTAL_RANKS) {
-				throw new FENFormatException("Exceeded total amounts of files.");
 			}
 		}
 	}

@@ -41,8 +41,10 @@ public class TestPanel extends JPanel {
 		// TODO This logic will do its thing elsewhere at a later point.
 		// Currently it's just here to demo the functionality
 		FenNotationParser parser = new FenNotationParser();
-		String position = "rnbqkbnr/ppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-		//String position = "2r2b2/p2q1P1p/3p2k1/4pNP1/4P1RQ/7K/2pr4/5R2";
+		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+		//String position = "5r1k/3q3p/p1pP4/2p2pQ1/r1P3R1/3P4/6PP/1R4K1";
+		
+		System.out.println();
 		
 		HashMap<Chesspiece, String> boardPosition = null;
 		try {

@@ -21,7 +21,8 @@ import nekrocode.chessgame.util.Utility;
 // TODO Include the remaining notation elements.
 //
 // TODO Do I want to return a square as String or as Square object?
-// I think as String.
+// Square for less converting one in different classes.
+// String for less dependency
 public class FenNotationParser {
 	
 	public HashMap<Chesspiece, String> parsePosition(String position) throws FENFormatException {
@@ -32,8 +33,6 @@ public class FenNotationParser {
 		} catch (FENFormatException e) {throw e;}	
 	}
 	
-	// TODO Add regex
-	// Added boolean temp to simulate the functionality the regex should achieve
 	private void validateFENFormat(String position) throws FENFormatException {
 		if (!position.matches("([rnbqkpRNBQKP1-8]{1,8}/){7}([rnbqkpRNBQKP1-8]{1,8})")) {
 			throw new FENFormatException("Incorrect FEN format.");

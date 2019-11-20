@@ -16,6 +16,8 @@ public class SquareSearcher {
 	}
 	
 	// TODO Separate logic into different methods?
+	//
+	// TODO Refactor a little bit after Square change (fileIndex variabel)
 	public Square getSquare(String name) throws IllegalSquareException {
 		//int fileIndex = findFileIndex(name.charAt(0), Chessboard.getFileLetters());
 		int fileIndex = getFileIndex(name.charAt(0));

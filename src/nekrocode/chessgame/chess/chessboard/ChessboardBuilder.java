@@ -15,9 +15,9 @@ public class ChessboardBuilder {
 		int rankNumber = totalRanks;
 		List<Character> letters = Chessboard.getFileLetters();
 		squares = new ArrayList<List<Square>>();
-		List<ChessColor> colors = getBoardColors();
+		List<ChessColor> colors = getColors();
 		for (int i = 0; i < totalRanks; i++) {
-			squares.add(createBoardRow(letters,rankNumber, colors));
+			squares.add(createRow(letters, rankNumber, colors));
 			Collections.reverse(colors);
 			rankNumber--;
 		}
@@ -27,13 +27,13 @@ public class ChessboardBuilder {
 		return new Chessboard(getSquares(), orientation);
 	}
 	
-	private List<Square> createBoardRow(List<Character> letters, int rankNumber, List<ChessColor> colors) {
+	private List<Square> createRow(List<Character> letters, int rankNumber, List<ChessColor> colors) {
 		List<Square> row = new ArrayList<Square>();
 		int totalFiles = letters.size();
 		int colorIndex = 0;
 		
 		for (int i = 0; i < totalFiles; i++) {
-			row.add(new Square(letters.get(i), rankNumber, colors.get(colorIndex)));
+			row.add(new Square(letters.get(i), rankNumber, i, colors.get(colorIndex)));
 			colorIndex++;
 			if (colorIndex > 1) { 
 				colorIndex = 0;
@@ -43,7 +43,7 @@ public class ChessboardBuilder {
 		return row;
 	}
 	
-	private List<ChessColor> getBoardColors() {
+	private List<ChessColor> getColors() {
 		List<ChessColor> colors = new ArrayList<ChessColor>();
 		for (ChessColor color : ChessColor.values()) {
 			colors.add(color);

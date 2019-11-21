@@ -1,2 +1,0 @@
-This package contains classes I wrote and included into the build but decided to remove at some point.
-It's meant to be a temporal archive in case I need some of the code back at a later stage of development before completely deleting it. 

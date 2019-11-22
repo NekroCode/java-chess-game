@@ -1,4 +1,4 @@
-package nekrocode.chessgame.test_environment;
+package nekrocode.chessgame.test_environment.tests;
 
 public class ChesspieceTest {
 

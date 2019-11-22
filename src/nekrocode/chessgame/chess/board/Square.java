@@ -1,6 +1,6 @@
 package nekrocode.chessgame.chess.board;
 
-import nekrocode.chessgame.chess.ChessColor;
+import nekrocode.chessgame.chess.game.ChessColor;
 
 public final class Square {
 	

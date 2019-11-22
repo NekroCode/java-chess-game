@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import nekrocode.chessgame.test_environment.TestPanel;
+import nekrocode.chessgame.test_environment.tests.TestPanel;
 import nekrocode.chessgame.userinterface.menubar.MyMenuBar;
 
 /**

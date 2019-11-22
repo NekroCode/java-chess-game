@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 
  * Encoding protocol:
  * - 'x' represents an unused square
- * - '-' out of boundary
+ * - '-' out of boundary sentinel value
  * 
  * @author ~
  *

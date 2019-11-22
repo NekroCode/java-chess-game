@@ -1,7 +1,13 @@
-package nekrocode.chessgame.chess.board;
+package nekrocode.chessgame.userinterface.chessboard;
 
 import nekrocode.chessgame.chess.game.ChessColor;
 
+/**
+ * A model representing a chessboard square
+ * 
+ * @author ~
+ *
+ */
 public final class Square {
 	
 	private final int rank;

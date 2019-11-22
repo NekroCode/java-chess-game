@@ -2,16 +2,25 @@ package nekrocode.chessgame.test_environment.tests;
 
 import javax.swing.JPanel;
 
+import nekrocode.chessgame.chess.board.Chessboard;
 import nekrocode.chessgame.chess.game.BoardRepresentation;
+import nekrocode.chessgame.chess.game.ChessColor;
 import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenPositionParser;
 
+/**
+ * Used solely for testing
+ * 
+ * @author ~
+ *
+ */
 public class TestPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
 	public TestPanel() {
 		BoardRepresentation b = new BoardRepresentation();
+		Chessboard c = new Chessboard(b.getBoardPosition(), ChessColor.LIGHT);
 //		char[][] test = null;
 //		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 //		//String position = "rn/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";

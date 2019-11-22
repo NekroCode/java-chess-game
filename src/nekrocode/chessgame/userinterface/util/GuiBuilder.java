@@ -9,7 +9,8 @@ import nekrocode.chessgame.userinterface.menubar.MyMenuBar;
 
 /**
  * A separate class for drawing the graphical user interface is made so the non-static method
- * getClass() can be used to retrieve the application's image icon.
+ * getClass() can be used to retrieve the application's image icon
+ * 
  * @author ~
  *
  */

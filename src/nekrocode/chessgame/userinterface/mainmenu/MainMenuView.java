@@ -1,4 +1,4 @@
-package nekrocode.chessgame.userinterface.views;
+package nekrocode.chessgame.userinterface.mainmenu;
 
 import javax.swing.JPanel;
 

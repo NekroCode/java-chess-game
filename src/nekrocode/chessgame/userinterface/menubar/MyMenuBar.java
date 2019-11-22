@@ -24,18 +24,20 @@ public class MyMenuBar extends JMenuBar {
 	// TODO Better placement of JDialog
 	private void drawDialogBox(JFrame frame) {
 		JDialog dialog = new JDialog(frame, "About", true);
+		dialog.setResizable(false);
 		JTextPane p = new JTextPane();
 		p.setEditable(false);
-		p.setText("My first attempt in building a chess application. \n"
+		p.setText("My first attempt at building a chess application. \n"
 				+ "Version 0.1 \n\n"
-				+ "Special thanks to: \n"
+				+ "A thank you to: \n"
 				+ "- Bill Harvey for the chess puzzles (http://wtharvey.com). \n"
 				+ "- Everyone involved for taking the time to help me improve! \n\n"
 				+ "Images used: \n"
 				+ "- https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces \n\n"
 				+ "Improvement notes for version 0.2: \n"
-				+ "- Better abstraction between the backend, backend conversion and the graphical user interface \n"
-				+ "- Improve existing code by making use of interfaces where posssible");
+				+ "- Better abstraction between the backend, backend conversion and the graphical user interface. \n"
+				+ "- Improve existing code by making use of interfaces where posssible. \n"
+				+ "- Finding new techniques to improve memory usage and performance.");
 		dialog.add(p);
 		dialog.pack();
 		dialog.setLocation(frame.getLocation());

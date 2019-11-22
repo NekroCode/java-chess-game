@@ -8,7 +8,7 @@ public class Chessboard {
 	
 	public static final int TOTAL_RANKS = 8;
 	public static final int TOTAL_FILES = TOTAL_RANKS;
-	private List<List<Square>> squares; // TODO make it final
+	private List<List<Square>> squares; // TODO Is it needed? / make it final
 	
 	public Chessboard() {
 		

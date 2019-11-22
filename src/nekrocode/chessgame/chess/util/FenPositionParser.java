@@ -5,9 +5,6 @@ package nekrocode.chessgame.chess.util;
  * Current functionality:
  * - Validates the format using a regular expression
  * 
- * Encoding protocol:
- * - 'x' represents an unused square
- * 
  * TODO 
  * - Validate for illegal positions (two kings for one color for example)
  * - Validates the amount of files per rank
@@ -79,18 +76,18 @@ public class FenPositionParser {
 		return position;
 	}
 	
-	// TODO I may want to refactor this method to something global if it turns
-	// out I need to re-use it for something else
-	private String[] splitPosition(String notation) {
-		String[] positions = notation.split("/");
-		return positions;
-	}
-	
 	private char getUnusedSquare() {
 		return 'x';
 	}
 	
 	private int getSize() {
 		return 8;
+	}
+	
+	// TODO I may want to refactor this method to something global if it turns
+	// out I need to re-use it for something else
+	private String[] splitPosition(String notation) {
+		String[] positions = notation.split("/");
+		return positions;
 	}
 }

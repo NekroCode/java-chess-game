@@ -10,20 +10,16 @@ import nekrocode.chessgame.chess.game.ChessColor;
  */
 public final class Square {
 	
-	private final int rank;
 	private final char file;
 	private final int fileIndex;
+	private final int rank;
 	private final ChessColor color;
 	
-	public Square(char file, int rank, int fileIndex, ChessColor color) {
+	public Square(char file, int fileIndex, int rank, ChessColor color) {
 		this.file = file;
-		this.rank = rank;
 		this.fileIndex = fileIndex;
+		this.rank = rank;
 		this.color = color;
-	}
-	
-	public int getRank() {
-		return rank;
 	}
 	
 	public char getFile() {
@@ -32,6 +28,10 @@ public final class Square {
 	
 	public int getFileIndex() {
 		return fileIndex;
+	}
+	
+	public int getRank() {
+		return rank;
 	}
 	
 	public ChessColor getColor() {

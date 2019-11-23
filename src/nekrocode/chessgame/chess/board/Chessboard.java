@@ -42,6 +42,10 @@ public class Chessboard {
 //		}
 	}
 	
+	public char[][] getBoardPosition() {
+		return boardPosition;
+	}
+	
 	public ChessColor getOrientation() {
 		return orientation;
 	}

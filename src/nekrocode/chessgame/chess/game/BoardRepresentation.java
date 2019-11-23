@@ -39,7 +39,7 @@ public class BoardRepresentation {
 		
 	}
 	
-	public char[][] getChessboard() {
+	public char[][] getChessboardAsArray() {
 		return chessboard;
 	}
 	

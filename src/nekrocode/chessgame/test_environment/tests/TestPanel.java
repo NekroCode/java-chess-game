@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import nekrocode.chessgame.chess.board.Chessboard;
 import nekrocode.chessgame.chess.game.BoardRepresentation;
 import nekrocode.chessgame.chess.game.ChessColor;
+import nekrocode.chessgame.chess.game.GameCreator;
 import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenPositionParser;
 import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
@@ -23,7 +24,11 @@ public class TestPanel extends JPanel {
 		BoardRepresentation b = new BoardRepresentation();
 		Chessboard c = new Chessboard(b.getBoardPosition(), ChessColor.LIGHT);
 		ChessboardView v = new ChessboardView(c);
-		add(v);
+		//add(v);
+		
+		GameCreator gc = new GameCreator();
+		gc.preparePieces(c.getBoardPosition());		
+		
 //		char[][] test = null;
 //		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 //		//String position = "rn/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";

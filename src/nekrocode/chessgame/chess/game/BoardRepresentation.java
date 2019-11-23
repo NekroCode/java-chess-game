@@ -11,6 +11,11 @@ import java.util.Arrays;
  * Encoding protocol:
  * - 'x' represents an unused square
  * - '-' out of boundary sentinel value
+ * - Upper case letters represent white pieces
+ * - Lower case letters represent black pieces
+ * 
+ * TODO 
+ * - Define the board as an array of bytes for better memory usage
  * 
  * @author ~
  *

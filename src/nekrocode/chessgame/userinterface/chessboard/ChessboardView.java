@@ -16,7 +16,7 @@ import nekrocode.chessgame.chess.game.ChessColor;
  * 
  * TODO 
  * - Figure out if the dependency between this class and Chessboard is needed
- * - Put createSquarePanels() logic elsewhere
+ * - Put createSquarePanels() logic elsewhere?
  * 
  * @author ~
  *
@@ -55,7 +55,6 @@ public class ChessboardView extends JPanel {
 		}
 	}
 	
-	
 	private List<List<SquarePanel>> createSquarePanels() {
 		List<List<SquarePanel>> squarePanels = new ArrayList<List<SquarePanel>>();
 		List<SquarePanel> row = new ArrayList<SquarePanel>();
@@ -63,17 +62,15 @@ public class ChessboardView extends JPanel {
 		int rank = Chessboard.TOTAL_RANKS;
 		int totalSquares = rank * Chessboard.TOTAL_RANKS;
 		int totalFiles = Chessboard.TOTAL_FILES;
-		int start = 1;
-		int file = start;
-		int colorIndex = 0;
+		int start = 1, file = start, colorIndex = 0;
 		
 		for (int i = 0; i <= totalSquares; i++) {
 			if (file > totalFiles) {
 				file = start;
 				rank--;
-				Collections.reverse(colors);
 				squarePanels.add(row);
 				row = new ArrayList<SquarePanel>();
+				Collections.reverse(colors);
 			}
 			if (colorIndex > 1) { 
 				colorIndex = 0;

@@ -23,23 +23,6 @@ public class Chessboard {
 	public Chessboard(char[][] boardPosition, ChessColor orientation) {
 		this.boardPosition = boardPosition;
 		this.orientation = orientation;
-		
-		// Test code
-//		int rank = 8;
-//		int file = 1;
-//		for (char[] list : boardPosition) {
-//			rank--;
-//			for (int b = 0; b < list.length; b++) {
-//				Character c = boardPosition[rank][b];
-//				if (c.equals('x')) {
-//					char f = getFileLetters().get(b);
-//					System.out.print(f + "" + rank);
-//				} else {
-//					System.out.print(c + " ");
-//				}
-//			}
-//			System.out.println("");
-//		}
 	}
 	
 	public char[][] getBoardPosition() {

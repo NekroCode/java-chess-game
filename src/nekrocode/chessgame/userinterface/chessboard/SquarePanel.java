@@ -18,13 +18,10 @@ import nekrocode.chessgame.chess.game.ChessColor;
 public class SquarePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private Square square;
 	
 	public SquarePanel(Square square) {
-		this.square = square;
-		//setLayout(new GridLayout(1,1));
+		setLayout(new GridLayout(1,1));
 		setBackground(getColor(square));
-		add(new JLabel(toString()));
 		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
 	}
@@ -36,10 +33,6 @@ public class SquarePanel extends JPanel {
 		} else { 
 			return ChessboardConfig.getDarkColor();
 		}
-	}
-	
-	public String toString() {
-		return square.toString();
 	}
 	
 }

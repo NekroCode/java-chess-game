@@ -1,7 +1,6 @@
 package nekrocode.chessgame.chess.game;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import nekrocode.chessgame.chess.pieces.ChessPiece;
 import nekrocode.chessgame.chess.pieces.ChessPieceException;
@@ -58,5 +57,13 @@ public class GameCreator {
 		} else {
 			darkPieces.put(chessPiece, position);
 		}
+	}
+	
+	public HashMap<ChessPiece, byte[]> getLightPieces() {
+		return lightPieces;
+	}
+	
+	public HashMap<ChessPiece, byte[]> getDarkPieces() {
+		return darkPieces;
 	}
 }

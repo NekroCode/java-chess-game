@@ -10,12 +10,13 @@ import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.board.Chessboard;
 import nekrocode.chessgame.chess.game.ChessColor;
+import nekrocode.chessgame.userinterface.chesspieces.ChessPiecePanel;
 
 /**
  * Visual representation of a chessboard
  * 
  * TODO 
- * - Figure out if the dependency between this class and Chessboard is needed
+ * - Eliminate the dependency between this class and Chessboard
  * - Put createSquarePanels() logic elsewhere?
  * 
  * @author ~

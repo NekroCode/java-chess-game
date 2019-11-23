@@ -5,8 +5,8 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
 
 public class Rook extends ChessPiece {
 
-	public Rook(char letter, ChessColor color) {
-		super("Rook", letter, color);
+	public Rook(ChessColor color) {
+		super("Rook", 'R', color);
 	}
 
 }

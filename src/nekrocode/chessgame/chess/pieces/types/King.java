@@ -5,8 +5,8 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
 
 public class King extends ChessPiece {
 
-	public King(char letter, ChessColor color) {
-		super("King", letter, color);
+	public King(ChessColor color) {
+		super("King", 'K', color);
 	}
 
 }

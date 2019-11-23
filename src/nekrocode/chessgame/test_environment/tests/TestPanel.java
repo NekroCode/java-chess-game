@@ -9,6 +9,7 @@ import nekrocode.chessgame.chess.game.GameCreator;
 import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenPositionParser;
 import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
+import nekrocode.chessgame.userinterface.chessboard.util.ChessPieceAppender;
 
 /**
  * Used solely for testing
@@ -24,10 +25,14 @@ public class TestPanel extends JPanel {
 		BoardRepresentation b = new BoardRepresentation();
 		Chessboard c = new Chessboard(b.getBoardPosition(), ChessColor.LIGHT);
 		ChessboardView v = new ChessboardView(c);
-		//add(v);
+		add(v);
 		
 		GameCreator gc = new GameCreator();
-		gc.preparePieces(c.getBoardPosition());		
+		gc.preparePieces(c.getBoardPosition());
+		ChessPieceAppender a = new ChessPieceAppender(v);
+		a.appendPosition(gc.getLightPieces());
+		a.appendPosition(gc.getDarkPieces());
+		
 		
 //		char[][] test = null;
 //		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";

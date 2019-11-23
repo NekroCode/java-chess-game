@@ -5,8 +5,8 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
 
 public class Queen extends ChessPiece {
 
-	public Queen(char letter, ChessColor color) {
-		super("Queen", letter, color);
+	public Queen(ChessColor color) {
+		super("Queen", 'Q', color);
 	}
 
 }

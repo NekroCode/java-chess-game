@@ -22,22 +22,22 @@ public class PieceCreator {
 		ChessPiece chessPiece = null;
 		switch (letter) {
 			case 'p' :
-				chessPiece = new Pawn('P', color);
+				chessPiece = new Pawn(color);
 				break;
 			case 'n' :
-				chessPiece = new Knight('N', color);
+				chessPiece = new Knight(color);
 				break;
 			case 'b' :
-				chessPiece = new Bishop('B', color);
+				chessPiece = new Bishop(color);
 				break;
 			case 'r' :
-				chessPiece = new Rook('R', color);
+				chessPiece = new Rook(color);
 				break;
 			case 'q' :
-				chessPiece = new Queen('Q', color);
+				chessPiece = new Queen(color);
 				break;
 			case 'k' : 
-				chessPiece = new King('K', color);
+				chessPiece = new King(color);
 				break;
 		}
 		if (chessPiece == null) {

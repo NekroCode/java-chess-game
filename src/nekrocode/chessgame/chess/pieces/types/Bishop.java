@@ -5,8 +5,8 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
 
 public class Bishop extends ChessPiece {
 
-	public Bishop(char letter, ChessColor color) {
-		super("Bishop", letter, color);
+	public Bishop(ChessColor color) {
+		super("Bishop", 'B', color);
 	}
 
 }

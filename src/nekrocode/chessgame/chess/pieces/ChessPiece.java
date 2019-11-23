@@ -2,6 +2,12 @@ package nekrocode.chessgame.chess.pieces;
 
 import nekrocode.chessgame.chess.game.ChessColor;
 
+/**
+ * Abstract class representing the general purpose of a chess piece
+ * 
+ * @author ~
+ *
+ */
 public abstract class ChessPiece {
 	
 	protected final String NAME;

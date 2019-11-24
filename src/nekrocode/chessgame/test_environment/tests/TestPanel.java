@@ -25,27 +25,27 @@ public class TestPanel extends JPanel {
 		BoardRepresentation b = new BoardRepresentation();
 		Chessboard c = new Chessboard(b.getBoardPosition(), ChessColor.LIGHT);
 		ChessboardView v = new ChessboardView(c);
-		add(v);
+		
+		char[][] test = null;
+		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+		//String position = "r1b3kr/ppp1Bp1p/1b6/n2P4/2p3q1/2Q2N2/P4PPP/RN2R1K1";
+		FenPositionParser p = new FenPositionParser();
+		try {
+			test = p.parsePosition(position);
+			for (char[] list : test) {
+				//System.out.println(list);
+			}
+		} catch (FenNotationException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		GameCreator gc = new GameCreator();
-		gc.preparePieces(c.getBoardPosition());
+		gc.preparePieces(test);
 		ChessPieceAppender a = new ChessPieceAppender(v);
 		a.appendPosition(gc.getLightPieces());
 		a.appendPosition(gc.getDarkPieces());
 		
-//		char[][] test = null;
-//		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-//		//String position = "rn/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-//		//String position = "r1b3kr/ppp1Bp1p/1b6/n2P4/2p3q1/2Q2N2/P4PPP/RN2R1K1";
-//		FenPositionParser p = new FenPositionParser();
-//		try {
-//			test = p.parsePosition(position);
-//			for (char[] list : test) {
-//				System.out.println(list);
-//			}
-//		} catch (FenNotationException e) {
-//			System.out.println(e.getMessage());
-//		}
+		add(v);
 	}
 	
 }

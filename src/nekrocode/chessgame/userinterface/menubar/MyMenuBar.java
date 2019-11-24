@@ -37,7 +37,8 @@ public class MyMenuBar extends JMenuBar {
 				+ "Improvement notes for version 0.2: \n"
 				+ "- Better abstraction between the backend, backend conversion and the graphical user interface where possible. \n"
 				+ "- Improve existing code by making use of interfaces where posssible. \n"
-				+ "- Finding new techniques to improve memory usage and performance.");
+				+ "- Finding new techniques to improve memory usage and performance. \n"
+				+ "- Improve by eliminating code logic duplication.");
 		dialog.add(p);
 		dialog.pack();
 		dialog.setLocation(frame.getLocation());

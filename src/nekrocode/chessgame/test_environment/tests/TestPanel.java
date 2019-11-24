@@ -33,7 +33,6 @@ public class TestPanel extends JPanel {
 		a.appendPosition(gc.getLightPieces());
 		a.appendPosition(gc.getDarkPieces());
 		
-		
 //		char[][] test = null;
 //		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 //		//String position = "rn/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";

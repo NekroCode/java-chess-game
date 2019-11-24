@@ -35,4 +35,10 @@ public class SquarePanel extends JPanel {
 		}
 	}
 	
+	public void emptySquare() {
+		removeAll();
+		revalidate();
+		repaint();
+	}
+	
 }

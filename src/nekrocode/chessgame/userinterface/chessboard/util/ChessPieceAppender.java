@@ -12,7 +12,7 @@ import nekrocode.chessgame.userinterface.chesspieces.ChessPiecePanel;
  * This class is used to append a visual chess piece on to a visual chessboard
  * 
  * TODO
- * - Improve code and make it better/ cleaner
+ * - Improve code and make it better/cleaner
  * - Error handling when trying to append to a square which is already taken by another piece
  * 
  * @author ~
@@ -28,8 +28,8 @@ public class ChessPieceAppender {
 	
 	public void appendPosition(HashMap<ChessPiece, byte[]> pieces) {
 		for (Map.Entry<ChessPiece, byte[]> entry : pieces.entrySet()) {
-			int rank = entry.getValue()[0];
-			int file = entry.getValue()[1];
+			byte rank = entry.getValue()[0];
+			byte file = entry.getValue()[1];
 			ChessPiece chessPiece = entry.getKey();
 			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece);
 			appendPiece(chessPiecePanel, view.getSquarePanels().get(rank).get(file));

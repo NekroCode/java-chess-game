@@ -49,6 +49,10 @@ public class GameCreator {
 		}
 	}
 	
+	public void createBoard(char[][] boardPosition) {
+		
+	}
+	
 	private void insertChessPiece(ChessPiece chessPiece, byte rank, byte file) {
 		byte[] position = new byte[]{rank, file};
 		ChessColor color = chessPiece.getColor();

@@ -6,6 +6,7 @@ package nekrocode.chessgame.chess.util;
  * - Validates the format using a regular expression
  * 
  * TODO 
+ * - Remove code duplication (same as GameCreator).
  * - Validate for illegal positions (two kings for one color for example)
  * - Validates the amount of files per rank
  * - Replace the following methods
@@ -42,7 +43,6 @@ public class FenPositionParser {
 	}
 	
 	private char[] getRankAsArray(String rankPosition) throws FenNotationException {
-		int file = 1;
 		int length = rankPosition.length();
 		char unusedSquare = getUnusedSquare();
 		StringBuilder builder = new StringBuilder();
@@ -51,13 +51,11 @@ public class FenPositionParser {
 			if (object.equals("8")) { return getEmptyRowAsArray(); }
 			try {
 				int increment = Integer.parseInt(object);
-				file += increment;
 				for (int b = 0; b < increment; b++) {
 					builder.append(unusedSquare);
 				}
 			} catch (Exception e ) {
 				builder.append(object);
-				file++;
 			}
 		}
 		return buildRank(builder.toString());
@@ -67,6 +65,7 @@ public class FenPositionParser {
 		return buildRank("xxxxxxxx");
 	}
 	
+	// TODO Duplication
 	private char[] buildRank(String rankPosition) {
 		int size = getSize();
 		char[] position = new char[size];

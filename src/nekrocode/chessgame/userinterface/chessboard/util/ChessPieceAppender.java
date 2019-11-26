@@ -26,11 +26,11 @@ public class ChessPieceAppender {
 		this.view = view;
 	}
 	
-	public void appendPosition(HashMap<ChessPiece, byte[]> pieces) {
-		for (Map.Entry<ChessPiece, byte[]> entry : pieces.entrySet()) {
-			byte rank = entry.getValue()[0];
-			byte file = entry.getValue()[1];
-			ChessPiece chessPiece = entry.getKey();
+	public void appendPosition(HashMap<byte[], ChessPiece> pieces) {
+		for (Map.Entry<byte[], ChessPiece> entry : pieces.entrySet()) {
+			byte rank = entry.getKey()[0];
+			byte file = entry.getKey()[1];
+			ChessPiece chessPiece = entry.getValue();
 			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece);
 			appendPiece(chessPiecePanel, view.getSquarePanels().get(rank).get(file));
 		}

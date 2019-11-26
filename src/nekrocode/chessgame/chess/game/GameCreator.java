@@ -13,18 +13,19 @@ import nekrocode.chessgame.chess.pieces.PieceCreator;
  * 
  * TODO
  * - Requires validation before processing. Would want to make it less dependent in the future
+ * - Remove code duplication (same as FenPositionParser).
  * 
  * @author ~
  *
  */
 public class GameCreator {
 	
-	private HashMap<ChessPiece, byte[]> lightPieces;
-	private HashMap<ChessPiece, byte[]> darkPieces;
+	private HashMap<byte[], ChessPiece> lightPieces;
+	private HashMap<byte[], ChessPiece> darkPieces;
 	
 	public GameCreator() {
-		lightPieces = new HashMap<ChessPiece, byte[]>();
-		darkPieces = new HashMap<ChessPiece, byte[]>();
+		lightPieces = new HashMap<byte[], ChessPiece>();
+		darkPieces = new HashMap<byte[], ChessPiece>();
 	}
 	
 	// TODO Handle catch clause
@@ -49,25 +50,61 @@ public class GameCreator {
 		}
 	}
 	
-	public void createBoard(char[][] boardPosition) {
-		
+	// TODO Too messy in my opinion. Want to change when there's more time
+	public char[][] createBoard(char[][] boardPosition) {
+		int rowSize = 12;
+		int columnSize = rowSize;
+		int start = 2;
+		int end = 10;
+		int index = 0;
+		char[][] chessboard = new char[rowSize][columnSize];
+		for (int i = 0; i < rowSize; i++) {
+			if (i >= start && i < end) {
+				StringBuilder builder = new StringBuilder();
+				builder.append("--");
+				builder.append(boardPosition[index]);
+				if (index > 7) {
+					index = 0;
+				}
+				index++;
+				builder.append("--");
+				chessboard[i] = buildRank(builder.toString());
+			} else {
+				chessboard[i] = buildRank("------------");
+			}
+		}
+		return chessboard;
+	}
+	
+	private char[] getEmptyRowAsArray() {
+		return buildRank("xxxxxxxx");
+	}
+	
+	// TODO Duplication
+	private char[] buildRank(String rankPosition) {
+		int length = rankPosition.length();
+		char[] position = new char[length];
+		for (int i = 0; i < length; i++) {
+			position[i] = rankPosition.substring(i,i+1).charAt(0);
+		}
+		return position;
 	}
 	
 	private void insertChessPiece(ChessPiece chessPiece, byte rank, byte file) {
 		byte[] position = new byte[]{rank, file};
 		ChessColor color = chessPiece.getColor();
 		if (color == ChessColor.LIGHT) {
-			lightPieces.put(chessPiece, position);
+			lightPieces.put(position, chessPiece);
 		} else {
-			darkPieces.put(chessPiece, position);
+			darkPieces.put(position, chessPiece);
 		}
 	}
 	
-	public HashMap<ChessPiece, byte[]> getLightPieces() {
+	public HashMap<byte[], ChessPiece> getLightPieces() {
 		return lightPieces;
 	}
 	
-	public HashMap<ChessPiece, byte[]> getDarkPieces() {
+	public HashMap<byte[], ChessPiece> getDarkPieces() {
 		return darkPieces;
 	}
 }

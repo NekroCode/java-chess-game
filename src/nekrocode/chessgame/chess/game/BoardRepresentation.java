@@ -23,7 +23,7 @@ import java.util.Arrays;
 public class BoardRepresentation {
 	
 	private ChessColor toMove;
-	// Temporal variabel to hold a chessboard (and its off bound sentinel value) with the usual starting position
+	// Temporal variable to hold a chessboard (and its off bound sentinel value) with the usual starting position
 	// for visual purpose
 	private char[][] chessboard = {
 			{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',},
@@ -49,7 +49,7 @@ public class BoardRepresentation {
 	}
 	
 	public char[][] getBoardPosition() {
-		int size = 8;
+		int size = 8; 
 		char[][] boardPosition = new char[size][size];
 		char[] rank = new char[size];
 		int start = 2;

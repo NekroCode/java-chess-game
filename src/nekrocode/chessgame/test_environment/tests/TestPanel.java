@@ -41,6 +41,7 @@ public class TestPanel extends JPanel {
 		
 		GameCreator gc = new GameCreator();
 		gc.preparePieces(test);
+		gc.createBoard(b.getBoardPosition());
 		ChessPieceAppender a = new ChessPieceAppender(v);
 		a.appendPosition(gc.getLightPieces());
 		a.appendPosition(gc.getDarkPieces());

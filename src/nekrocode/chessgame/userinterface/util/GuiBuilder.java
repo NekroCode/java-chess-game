@@ -32,7 +32,7 @@ public class GuiBuilder {
 		
 		//frame.pack();
 		//frame.setVisible(true);
-		System.exit(0);
+		//System.exit(0);
 	}
 	
 }

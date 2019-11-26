@@ -1,6 +1,8 @@
 package nekrocode.chessgame.userinterface.chessboard;
 
 import java.awt.GridLayout;
+import java.awt.ItemSelectable;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,7 +12,6 @@ import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.board.Chessboard;
 import nekrocode.chessgame.chess.game.ChessColor;
-import nekrocode.chessgame.userinterface.chesspieces.ChessPiecePanel;
 
 /**
  * Visual representation of a chessboard

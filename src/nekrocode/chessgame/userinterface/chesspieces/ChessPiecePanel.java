@@ -43,4 +43,5 @@ public class ChessPiecePanel extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 	}
+	
 }

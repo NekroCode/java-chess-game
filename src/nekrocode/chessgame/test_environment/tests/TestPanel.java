@@ -21,32 +21,32 @@ public class TestPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	public TestPanel() {
-		BoardRepresentation b = new BoardRepresentation();
-		Chessboard c = new Chessboard(b.getBoardPosition(), ChessColor.LIGHT);
-		ChessboardView v = new ChessboardView(c);
-		
-		char[][] test = null;
+	public TestPanel() {		
 		String position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 		//String position = "r1b3kr/ppp1Bp1p/1b6/n2P4/2p3q1/2Q2N2/P4PPP/RN2R1K1";
-		FenPositionParser p = new FenPositionParser();
+		
+		FenPositionParser parser = new FenPositionParser();
+		char[][] boardPosition = null;
 		try {
-			test = p.parsePosition(position);
-			for (char[] list : test) {
-				//System.out.println(list);
-			}
+			boardPosition = parser.parsePosition(position);
 		} catch (FenNotationException e) {
 			System.out.println(e.getMessage());
+			return;
 		}
 		
 		GameCreator gc = new GameCreator();
-		gc.preparePieces(test);
-		gc.createBoard(b.getBoardPosition());
-		ChessPieceAppender a = new ChessPieceAppender(v);
-		a.appendPosition(gc.getLightPieces());
-		a.appendPosition(gc.getDarkPieces());
+		char[][] chessboardArray = gc.createBoard(boardPosition);
+		gc.preparePieces(boardPosition);
 		
-		add(v);
+		BoardRepresentation board = new BoardRepresentation(chessboardArray);
+		Chessboard chessboard = new Chessboard(boardPosition, ChessColor.LIGHT);
+		ChessboardView view = new ChessboardView(chessboard);
+		
+		ChessPieceAppender pieceAppender = new ChessPieceAppender(view);
+		pieceAppender.appendPosition(gc.getLightPieces());
+		pieceAppender.appendPosition(gc.getDarkPieces());
+		
+		add(view);
 	}
 	
 }

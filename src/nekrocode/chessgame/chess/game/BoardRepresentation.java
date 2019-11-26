@@ -22,26 +22,17 @@ import java.util.Arrays;
  */
 public class BoardRepresentation {
 	
+	private char[][] chessboard;
 	private ChessColor toMove;
-	// Temporal variable to hold a chessboard (and its off bound sentinel value) with the usual starting position
-	// for visual purpose
-	private char[][] chessboard = {
-			{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',},
-			{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',},
-			{'-', '-', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r', '-', '-',},
-			{'-', '-', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '-', '-',},
-			{'-', '-', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '-', '-',},
-			{'-', '-', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '-', '-',},
-			{'-', '-', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '-', '-',},
-			{'-', '-', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', '-', '-',},
-			{'-', '-', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', '-', '-',},
-			{'-', '-', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R', '-', '-',},
-			{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',},
-			{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-',}
-	};
 	
-	public BoardRepresentation() {
-		
+	public BoardRepresentation(char[][] chessboard) {
+		this.chessboard = chessboard;
+//		for (char[] list : chessboard) {
+//			for (char c : list) {
+//				System.out.print(c);
+//			}
+//			System.out.println("");
+//		}
 	}
 	
 	public char[][] getChessboardAsArray() {

@@ -61,4 +61,12 @@ public class ChessPiecePanel extends JPanel {
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 	}
 	
+	public byte getRank() {
+		return rank;
+	}
+	
+	public byte getFile() {
+		return file;
+	}
+	
 }

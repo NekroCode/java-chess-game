@@ -4,23 +4,40 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import nekrocode.chessgame.chess.board.SquareTranslator;
 import nekrocode.chessgame.chess.game.ChessColor;
 import nekrocode.chessgame.chess.pieces.ChessPiece;
 
 public class ChessPiecePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private byte rank;
+	private byte file;
 	private Image image;
 	
-	public ChessPiecePanel(ChessPiece chessPiece) {
+	public ChessPiecePanel(ChessPiece chessPiece, byte rank, byte file) {
+		this.rank = rank;
+		this.file = file;
 		setLayout(new GridLayout(1, 1));
 		setBackground(null);
 		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
+		addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				// Testing
+				SquareTranslator t = new SquareTranslator();
+				String s = t.getSquareName(rank, file);
+				System.out.println("I am a " + chessPiece.toString() + " standing on " + s + "...");
+				System.out.println("and I have " + chessPiece.getMoveSet().length + " possible directions");
+				System.out.println("----");
+			}
+		});
 		// TODO Handle catch clause
 		try {
 			ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource(getImageURLAsString(chessPiece)));

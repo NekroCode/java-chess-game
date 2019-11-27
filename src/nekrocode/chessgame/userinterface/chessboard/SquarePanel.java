@@ -3,6 +3,8 @@ package nekrocode.chessgame.userinterface.chessboard;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +26,12 @@ public class SquarePanel extends JPanel {
 		setBackground(getColor(square));
 		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
+//		addMouseListener(new MouseAdapter() {
+//			public void mouseClicked(MouseEvent e) {
+//				// Testing
+//				System.out.println(e.toString());
+//			}
+//		});
 	}
 	
 	private Color getColor(Square square) {

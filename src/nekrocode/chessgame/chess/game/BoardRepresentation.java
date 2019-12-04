@@ -1,6 +1,10 @@
 package nekrocode.chessgame.chess.game;
 
 import java.util.Arrays;
+import java.util.HashMap;
+
+import nekrocode.chessgame.chess.game.enums.ChessColor;
+import nekrocode.chessgame.chess.pieces.ChessPiece;
 
 /**
  * This class is used to represent a chessboard in the following ways (for now):
@@ -16,41 +20,53 @@ import java.util.Arrays;
  * 
  * TODO 
  * - Define the board as an array of bytes for better memory usage
+ * - Are the HashMaps really needed? If so, could I change the data structure for better memory usage?
+ * - I don't like the 12x12 array implementation.
+ * 	 - Placed a few constants so other classes no where to start when leaving out the boundary sentinel value
  * 
  * @author ~
  *
  */
 public class BoardRepresentation {
 	
-	private char[][] chessboard;
+	// Represents the size of the rank and file length
+	public static int LENGTH = 8; 
+	// Represents where in the array the actual chessboard starts and ends
+	public static int BOARD_START = 2;
+	public static int BOARD_END = 10;
+	
+	private char[][] boardPosition;
+	private HashMap<byte[], ChessPiece> lightPieces;
+	private HashMap<byte[], ChessPiece> darkPieces;
 	private ChessColor toMove;
 	
-	public BoardRepresentation(char[][] chessboard) {
-		this.chessboard = chessboard;
-//		for (char[] list : chessboard) {
-//			for (char c : list) {
-//				System.out.print(c);
-//			}
-//			System.out.println("");
-//		}
-	}
-	
-	public char[][] getChessboardAsArray() {
-		return chessboard;
+	public BoardRepresentation(char[][] boardPosition,
+			HashMap<byte[], ChessPiece> lightPieces,
+			HashMap<byte[], ChessPiece> darkPieces,
+			ChessColor toMove) {
+		this.boardPosition = boardPosition;
+		this.lightPieces = lightPieces;
+		this.darkPieces = darkPieces;
+		this.toMove = toMove;
 	}
 	
 	public char[][] getBoardPosition() {
-		int size = 8; 
-		char[][] boardPosition = new char[size][size];
-		char[] rank = new char[size];
-		int start = 2;
-		int end = 10;
-		int index = start;
-		for (int i = 0; i < size; i++) {
-			rank = Arrays.copyOfRange(chessboard[index], start, end);
-			boardPosition[i] = rank;
-			index++;
-		}
 		return boardPosition;
+	}
+	
+	public void setToMove(ChessColor toMove) {
+		this.toMove = toMove;
+	}
+	
+	public ChessColor getToMove() {
+		return toMove;
+	}
+	
+	public HashMap<byte[], ChessPiece> getLightPieces() {
+		return lightPieces;
+	}
+	
+	public HashMap<byte[], ChessPiece> getDarkPieces() {
+		return darkPieces;
 	}
 }

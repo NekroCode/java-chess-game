@@ -1,6 +1,6 @@
 package nekrocode.chessgame.chess.pieces;
 
-import nekrocode.chessgame.chess.game.ChessColor;
+import nekrocode.chessgame.chess.game.enums.ChessColor;
 import nekrocode.chessgame.chess.pieces.types.Bishop;
 import nekrocode.chessgame.chess.pieces.types.King;
 import nekrocode.chessgame.chess.pieces.types.Knight;

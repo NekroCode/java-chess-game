@@ -12,6 +12,13 @@ package nekrocode.chessgame.chess.util;
  * - Replace the following methods
  * 	 - getUnusedSquare()
  *   - getSize()
+ *   
+ * !!! IMPORTANT !!!
+ * - Due to time limitations and change in design I had to copy and paste some other code over.
+ * It's really redundant in it's current stage so I definitely want to change it when there's more time.
+ * Currently it's looping twice the create the final result, one should be enough.
+ * Also, regardless of the statement above, I don't like the 12x12 array implementation
+ * so it's a temporal fix until I get time to redesign code to be way more efficient.
  * 
  * @author ~
  *
@@ -22,7 +29,9 @@ public class FenPositionParser {
 		try { 
 			validateFENFormat(position);
 			String[] positions = splitPosition(position);
-			return getBoardAsArray(positions);
+			char[][] boardPosition = getBoardAsArray(positions);
+			return createBoardAsArrayTemp(boardPosition);
+			//return getBoardAsArray(positions);
 		} catch (FenNotationException e) {throw e;}
 	}
 	
@@ -88,5 +97,41 @@ public class FenPositionParser {
 	private String[] splitPosition(String notation) {
 		String[] positions = notation.split("/");
 		return positions;
+	}
+	
+	// TODO Too messy in my opinion. Want to change when there's more time
+	public char[][] createBoardAsArrayTemp(char[][] boardPosition) {
+		int rowSize = 12;
+		int columnSize = rowSize;
+		int start = 2;
+		int end = 10;
+		int index = 0;
+		char[][] chessboard = new char[rowSize][columnSize];
+		for (int i = 0; i < rowSize; i++) {
+			if (i >= start && i < end) {
+				StringBuilder builder = new StringBuilder();
+				builder.append("--");
+				builder.append(boardPosition[index]);
+				builder.append("--");
+				if (index > 7) {
+					index = 0;
+				}
+				index++;
+				chessboard[i] = buildRankTemp(builder.toString());
+			} else {
+				chessboard[i] = buildRankTemp("------------");
+			}
+		}
+		return chessboard;
+	}
+	
+	// TODO Duplication
+	private char[] buildRankTemp(String rankPosition) {
+		int length = rankPosition.length();
+		char[] position = new char[length];
+		for (int i = 0; i < length; i++) {
+			position[i] = rankPosition.substring(i,i+1).charAt(0);
+		}
+		return position;
 	}
 }

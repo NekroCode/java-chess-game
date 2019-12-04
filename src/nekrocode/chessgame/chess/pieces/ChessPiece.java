@@ -1,6 +1,6 @@
 package nekrocode.chessgame.chess.pieces;
 
-import nekrocode.chessgame.chess.game.ChessColor;
+import nekrocode.chessgame.chess.game.enums.ChessColor;
 
 /**
  * Abstract class representing the general purpose of a chess piece

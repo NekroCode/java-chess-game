@@ -11,7 +11,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.board.Chessboard;
-import nekrocode.chessgame.chess.game.ChessColor;
+import nekrocode.chessgame.chess.game.enums.ChessColor;
 
 /**
  * Visual representation of a chessboard

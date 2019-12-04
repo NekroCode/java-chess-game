@@ -1,6 +1,6 @@
 package nekrocode.chessgame.userinterface.chessboard;
 
-import nekrocode.chessgame.chess.game.ChessColor;
+import nekrocode.chessgame.chess.game.enums.ChessColor;
 
 /**
  * A model representing a chessboard square

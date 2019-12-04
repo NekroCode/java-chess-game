@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.instrument.Instrumentation;
 
 import javax.swing.JPanel;
 
@@ -28,7 +29,7 @@ public class SquarePanel extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				// Testing
-				System.out.println(e.toString());
+				System.out.println(e.getSource().toString());
 			}
 		});
 	}

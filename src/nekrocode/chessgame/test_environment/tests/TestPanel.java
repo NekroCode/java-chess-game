@@ -14,6 +14,7 @@ import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenPositionParser;
 import nekrocode.chessgame.modes.PuzzleOpponent;
 import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
+import nekrocode.chessgame.userinterface.chessboard.SquareHighlighter;
 import nekrocode.chessgame.userinterface.chessboard.util.ChessPieceAppender;
 
 /**
@@ -33,12 +34,6 @@ public class TestPanel extends JPanel {
 		try {
 			FenPositionParser parser = new FenPositionParser();
 			boardPosition = parser.parsePosition(position);
-//			for (char[] list : boardPosition) {
-//				for (char s : list) {
-//					System.out.print(s);
-//				}
-//				System.out.println("");
-//			}
 		} catch (FenNotationException e) {
 			System.out.println(e.getMessage());
 			return;

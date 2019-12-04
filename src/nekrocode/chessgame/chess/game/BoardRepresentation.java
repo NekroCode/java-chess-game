@@ -29,8 +29,9 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
  */
 public class BoardRepresentation {
 	
-	// Represents the size of the rank and file length
-	public static int LENGTH = 8; 
+	// Represents the amount of squares including the boundary sentinel
+	// value per rank and per file
+	public static int SIZE = 12;
 	// Represents where in the array the actual chessboard starts and ends
 	public static int BOARD_START = 2;
 	public static int BOARD_END = 10;

@@ -33,6 +33,12 @@ public class TestPanel extends JPanel {
 		try {
 			FenPositionParser parser = new FenPositionParser();
 			boardPosition = parser.parsePosition(position);
+//			for (char[] list : boardPosition) {
+//				for (char s : list) {
+//					System.out.print(s);
+//				}
+//				System.out.println("");
+//			}
 		} catch (FenNotationException e) {
 			System.out.println(e.getMessage());
 			return;

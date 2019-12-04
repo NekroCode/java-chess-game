@@ -2,6 +2,7 @@ package nekrocode.chessgame.chess.game;
 
 import java.util.HashMap;
 
+import nekrocode.chessgame.chess.board.Chessboard;
 import nekrocode.chessgame.chess.game.enums.ChessColor;
 import nekrocode.chessgame.chess.pieces.ChessPiece;
 import nekrocode.chessgame.chess.pieces.ChessPieceException;
@@ -22,7 +23,7 @@ public class ChessGameBuilder {
 	
 	// TODO Handle catch clause
 	public void preparePieces(char[][] boardPosition) {
-		int length = BoardRepresentation.LENGTH;
+		int length = Chessboard.TOTAL_RANKS;
 		int start = BoardRepresentation.BOARD_START;
 		int end = BoardRepresentation.BOARD_END;
 		int rank = 0, file = 0;

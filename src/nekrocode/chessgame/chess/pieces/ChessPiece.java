@@ -1,5 +1,7 @@
 package nekrocode.chessgame.chess.pieces;
 
+import java.util.List;
+
 import nekrocode.chessgame.chess.game.enums.ChessColor;
 
 /**
@@ -19,7 +21,7 @@ public abstract class ChessPiece {
 	// - Better way of passing the move increment and move set values from sub class
 	protected final byte[][] MOVE_SET;
 	protected final int MOVE_INCREMENT;
-	protected byte[][] legalMoves;
+	protected List<List<Byte>> legalMoves;
 	
 	public ChessPiece(String name, char letter, ChessColor color, int moveIncrement, byte[][] moveSet) {
 		NAME = name;
@@ -49,11 +51,11 @@ public abstract class ChessPiece {
 		return MOVE_INCREMENT;
 	}
 	
-	public void setLegalMoves(byte[][] legalMoves) {
+	public void setLegalMoves(List<List<Byte>> legalMoves) {
 		this.legalMoves = legalMoves;
 	}
 	
-	public byte[][] getLegalMoves() {
+	public List<List<Byte>> getLegalMoves() {
 		return legalMoves;
 	}
 	

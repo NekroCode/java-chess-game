@@ -20,14 +20,12 @@ public class PieceManager {
 	}
 	
 	public void handleInput(ChessPiece chessPiece, SquarePanel squarePanel) {
-		if (player.getColor() == chessPiece.getColor()) {
-			System.out.println("yo");
-		} else { return; }
+		if (player.getColor() != chessPiece.getColor()) {
+			squareManager.removeSelection();
+			return;
+		}
 		selectedPiece = chessPiece;
-	}
-	
-	private void handleSquares(ChessPiece chessPiece, SquarePanel squarePanel) {
-		
+		squareManager.manageSelection(chessPiece, squarePanel);
 	}
 	
 	public ChessboardView getChessboardView() {

@@ -19,6 +19,7 @@ public abstract class ChessPiece {
 	// - Better way of passing the move increment and move set values from sub class
 	protected final byte[][] MOVE_SET;
 	protected final int MOVE_INCREMENT;
+	protected byte[][] legalMoves;
 	
 	public ChessPiece(String name, char letter, ChessColor color, int moveIncrement, byte[][] moveSet) {
 		NAME = name;
@@ -46,6 +47,14 @@ public abstract class ChessPiece {
 	
 	public int getMoveIncrement() {
 		return MOVE_INCREMENT;
+	}
+	
+	public void setLegalMoves(byte[][] legalMoves) {
+		this.legalMoves = legalMoves;
+	}
+	
+	public byte[][] getLegalMoves() {
+		return legalMoves;
 	}
 	
 }

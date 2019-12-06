@@ -14,4 +14,12 @@ public class SquareHighlighter {
 		squarePanel.setBorder(null);
 	}
 	
+	public void addSelectionBackground(SquarePanel squarePanel) {
+		squarePanel.setBackground(Color.GREEN);
+	}
+	
+	public void removeSelectionBackground(SquarePanel squarePanel) {
+		squarePanel.setBackground(null);
+	}
+	
 }

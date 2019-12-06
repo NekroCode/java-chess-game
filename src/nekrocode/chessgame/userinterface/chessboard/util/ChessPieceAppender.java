@@ -32,12 +32,8 @@ public class ChessPieceAppender {
 			byte file = entry.getKey()[1];
 			ChessPiece chessPiece = entry.getValue();
 			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece, rank, file);
-			appendPiece(chessPiecePanel, view.getSquarePanels().get(rank).get(file));
+			view.getSquarePanels().get(rank).get(file).addChessPiece(chessPiecePanel);
 		}
-	}
-	
-	public void appendPiece(ChessPiecePanel chessPiecePanel, SquarePanel squarePanel) {
-		squarePanel.add(chessPiecePanel);
 	}
 	
 }

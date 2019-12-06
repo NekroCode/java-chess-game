@@ -5,11 +5,12 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.instrument.Instrumentation;
 
 import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.game.enums.ChessColor;
+import nekrocode.chessgame.chess.pieces.ChessPiece;
+import nekrocode.chessgame.userinterface.chesspieces.ChessPiecePanel;
 
 /**
  * Visual representation of a chessboard square
@@ -20,18 +21,32 @@ import nekrocode.chessgame.chess.game.enums.ChessColor;
 public class SquarePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private ChessboardView chessboardView;
+	private ChessPiecePanel chessPiecePanel;
 	
-	public SquarePanel(Square square) {
+	public SquarePanel(ChessboardView chessboardView, Square square) {
+		this.chessboardView = chessboardView;
 		setLayout(new GridLayout(1,1));
 		setBackground(getColor(square));
 		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
 		addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				// Testing
-				System.out.println(e.getSource().toString());
+			public void mousePressed(MouseEvent me) {
+				try {
+					ChessPiece chessPiece = chessPiecePanel.getChessPiece();
+					handleInput(chessPiece);
+				} catch (Exception e) {}
 			}
 		});
+	}
+	
+	public void handleInput(ChessPiece chessPiece) {
+		chessboardView.manageInput(chessPiece, this);
+	}
+	
+	public void addChessPiece(ChessPiecePanel chessPiecePanel) {
+		this.chessPiecePanel = chessPiecePanel;
+		add(chessPiecePanel);
 	}
 	
 	private Color getColor(Square square) {

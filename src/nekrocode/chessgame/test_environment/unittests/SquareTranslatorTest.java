@@ -23,7 +23,7 @@ class SquareTranslatorTest {
 	}
 	
 	private void squareToIndices(SquareTranslator t) {
-		String output = t.getSquareName(7, 0);
+		String output = t.getSquareName(0, 7);
 		assertEquals("a1", output);
 	}
 	

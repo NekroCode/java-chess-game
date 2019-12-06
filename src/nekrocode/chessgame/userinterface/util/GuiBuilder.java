@@ -1,10 +1,14 @@
 package nekrocode.chessgame.userinterface.util;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import nekrocode.chessgame.test_environment.tests.TestPanel;
+import nekrocode.chessgame.userinterface.mainmenu.MainMenuView;
 import nekrocode.chessgame.userinterface.menubar.MyMenuBar;
 
 /**
@@ -16,10 +20,12 @@ import nekrocode.chessgame.userinterface.menubar.MyMenuBar;
  */
 public class GuiBuilder {
 	
+	private JFrame frame;
+	
 	public GuiBuilder() {
 		try { UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel" );} 
 			catch(Exception e) {}
-		JFrame frame = new JFrame();
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Nekro's Chess Application");
 		// TODO Look into better ways of loading the image?
@@ -27,12 +33,17 @@ public class GuiBuilder {
 		//try { frame.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("imgs/icons/app_icon.png")).getImage()); } 
 			//catch (NullPointerException e) {}
 		frame.setJMenuBar(new MyMenuBar(frame));
-		//frame.setContentPane(new MainMenuPanel());
-		frame.setContentPane(new TestPanel());
-		
+		//changeContentPane(new MainMenuView());
+		changeContentPane(new TestPanel());
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		//System.exit(0);
+	}
+	
+	private void changeContentPane(JPanel panel) {
+		frame.setContentPane(panel);
+		frame.validate();
 	}
 	
 }

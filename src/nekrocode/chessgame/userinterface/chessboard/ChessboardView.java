@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.board.Chessboard;
 import nekrocode.chessgame.chess.game.enums.ChessColor;
+import nekrocode.chessgame.chess.pieces.ChessPiece;
+import nekrocode.chessgame.userinterface.chesspieces.PieceManager;
 
 /**
  * Visual representation of a chessboard
@@ -27,6 +29,7 @@ public class ChessboardView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private List<List<SquarePanel>> squarePanels;
+	private PieceManager pieceManager;
 	
 	public ChessboardView(Chessboard chessboard) {
 		setLayout(new GridLayout(Chessboard.TOTAL_RANKS, Chessboard.TOTAL_FILES));
@@ -37,6 +40,12 @@ public class ChessboardView extends JPanel {
 		} else if (orientation == ChessColor.DARK) {
 			drawDarkOrientation();
 		}
+	}
+	
+	public void manageInput(ChessPiece chessPiece, SquarePanel squarePanel) {
+		if (pieceManager != null) {
+			pieceManager.handleInput(chessPiece, squarePanel);
+		} 
 	}
 	
 	private void drawLightOrientation() {
@@ -79,7 +88,7 @@ public class ChessboardView extends JPanel {
 			}
 			char fileLetter = Chessboard.getFileLetters().get(file-1);
 			Square square = new Square(fileLetter, file-1, rank, colors.get(colorIndex));
-			SquarePanel squarePanel = new SquarePanel(square);
+			SquarePanel squarePanel = new SquarePanel(this, square);
 			row.add(squarePanel);
 			colorIndex++;
 			file++;			
@@ -90,6 +99,10 @@ public class ChessboardView extends JPanel {
 	
 	public List<List<SquarePanel>> getSquarePanels() {
 		return squarePanels;
+	}
+	
+	public void setPieceManager(PieceManager pieceManager) {
+		this.pieceManager = pieceManager;
 	}
 	
 }

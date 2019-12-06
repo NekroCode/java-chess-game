@@ -9,7 +9,7 @@ package nekrocode.chessgame.chess.board;
  */
 public class SquareTranslator {
 	
-	public String getSquareName(int rank, int fileIndex) {
+	public String getSquareName(int fileIndex, int rank) {
 		rank = Chessboard.TOTAL_RANKS - rank;
 		char file = Chessboard.getFileLetters().get(fileIndex);
 		return file + "" + rank ;

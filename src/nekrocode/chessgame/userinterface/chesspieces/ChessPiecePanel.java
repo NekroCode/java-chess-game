@@ -17,11 +17,13 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
 public class ChessPiecePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private ChessPiece chessPiece;
 	private byte rank;
 	private byte file;
 	private Image image;
 	
 	public ChessPiecePanel(ChessPiece chessPiece, byte rank, byte file) {
+		this.chessPiece = chessPiece;
 		this.rank = rank;
 		this.file = file;
 		setLayout(new GridLayout(1, 1));
@@ -57,6 +59,10 @@ public class ChessPiecePanel extends JPanel {
 	
 	public byte getFile() {
 		return file;
+	}
+	
+	public ChessPiece getChessPiece() {;
+		return chessPiece;
 	}
 	
 }

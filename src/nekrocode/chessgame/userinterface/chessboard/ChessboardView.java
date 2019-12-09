@@ -29,16 +29,17 @@ public class ChessboardView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private List<List<SquarePanel>> squarePanels;
+	private ChessColor orientation;
 	private PieceManager pieceManager;
 	
-	public ChessboardView(Chessboard chessboard) {
+	public ChessboardView(ChessColor orientation) {
 		setLayout(new GridLayout(Chessboard.TOTAL_RANKS, Chessboard.TOTAL_FILES));
-		ChessColor orientation = chessboard.getOrientation();
+		this.orientation = orientation;
 		squarePanels = createSquarePanels();
-		if (orientation == ChessColor.LIGHT) {
-			drawLightOrientation();
-		} else if (orientation == ChessColor.DARK) {
+		if (orientation == ChessColor.DARK) {
 			drawDarkOrientation();
+		} else {
+			drawLightOrientation();
 		}
 	}
 	

@@ -10,6 +10,7 @@ import javax.swing.UIManager;
 import nekrocode.chessgame.test_environment.tests.TestPanel;
 import nekrocode.chessgame.userinterface.mainmenu.MainMenuView;
 import nekrocode.chessgame.userinterface.menubar.MyMenuBar;
+import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
 
 /**
  * A separate class for drawing the graphical user interface is made so the non-static method
@@ -34,11 +35,12 @@ public class GuiBuilder {
 			//catch (NullPointerException e) {}
 		frame.setJMenuBar(new MyMenuBar(frame));
 		//changeContentPane(new MainMenuView());
-		changeContentPane(new TestPanel());
-		frame.pack();
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-		//System.exit(0);
+		//changeContentPane(new TestPanel());
+		changeContentPane(new PuzzleModeView());
+		//frame.pack();
+		//frame.setLocationRelativeTo(null);
+		//frame.setVisible(true);
+		System.exit(0);
 	}
 	
 	private void changeContentPane(JPanel panel) {

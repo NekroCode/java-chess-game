@@ -1,4 +1,4 @@
-package nekrocode.chessgame.modes;
+package nekrocode.chessgame.modes.puzzles;
 
 import nekrocode.chessgame.chess.players.Competitor;
 

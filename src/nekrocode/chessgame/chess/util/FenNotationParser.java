@@ -24,11 +24,13 @@ public class FenNotationParser {
 	}
 	
 	private void processLine(String line) {
-		if (line.equals("")) {
-			System.out.println("--- nothing here ---");
-		} else {
-			System.out.println(line);
-		}
+		if (!line.equals("")) {
+			String[] list = line.split(" ");
+			for (String s : list) {
+				System.out.println(s);
+			}
+			System.out.println("------");
+		} 
 	}
 	
 	/**

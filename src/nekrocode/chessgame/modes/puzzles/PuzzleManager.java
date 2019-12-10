@@ -7,12 +7,16 @@ import java.util.Map;
 import javax.swing.JButton;
 
 import nekrocode.chessgame.chess.game.ChessGame;
-import nekrocode.chessgame.chess.util.FenNotationParser;
+import nekrocode.chessgame.chess.game.ChessGameBuilder;
+import nekrocode.chessgame.chess.game.enums.ChessColor;
+import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenParsingManager;
+import nekrocode.chessgame.chess.util.FenPositionParser;
+import nekrocode.chessgame.userinterface.chessboard.util.ChessPieceAppender;
 import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
 
 /**
- * This class manages the course of a chess puzzle session
+ * This class manages the course of a chess puzzle session. Many improvements are to be made but for now, I just need to get something working.
  * 
  * TODO Improvements:
  * - The FEN board position notation is being validated twice currently. Once during FenPositionParser work and another time
@@ -23,25 +27,63 @@ import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
  */
 public class PuzzleManager {
 	
-	private PuzzleModeView view;
+	private PuzzleModeView puzzleModeView;
 	private JButton startBtn, nextBtn;
 	private List<List<Map<String, String>>> puzzleCollection;
 	
-	public PuzzleManager(PuzzleModeView view) {
-		this.view = view;
-		startBtn = view.getPuzzleControlPanel().getStartButton();
-		nextBtn = view.getPuzzleControlPanel().getNextButton();
+	public PuzzleManager(PuzzleModeView puzzleModeView) {
+		this.puzzleModeView = puzzleModeView;
+		startBtn = puzzleModeView.getPuzzleControlPanel().getStartButton();
+		nextBtn = puzzleModeView.getPuzzleControlPanel().getNextButton();
 		parsePuzzles();
 		startBtn.setEnabled(true);
+		
+		// temp
+		//skip();
+	}
+	
+	/**
+	 * Method skipping the user input for faster testing
+	 */
+	private void skip() {
+		startSession();
 	}
 	
 	public void startSession() {
 		startBtn.setEnabled(false);
 		createPuzzle();
+		System.out.println("started");
 	}
 	
+	/**
+	 * TODO
+	 * - Clean this method and divide abstraction between functionality
+	 * - Handle catch clause
+	 */
 	private void createPuzzle() {
+		Map<String, String> puzzle = puzzleCollection.get(0).get(0);
+		ChessColor toMove;
+		if (puzzle.get("toMove").equals("w")) {
+			toMove = ChessColor.LIGHT; } 
+			else { toMove = ChessColor.DARK; }
 		
+		String FenPosition = puzzle.get("boardPosition");
+		char[][] boardPosition = null;
+		try {
+			boardPosition = new FenPositionParser().parsePosition(FenPosition);
+		} catch (FenNotationException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+		
+		String[] moveSet = puzzle.get("moveSet").split("/");
+		
+		ChessGame chessGame = new ChessGameBuilder().createGame(boardPosition, toMove);
+		
+		// Temp testing
+		ChessPieceAppender pieceAppender = new ChessPieceAppender(puzzleModeView.getChessboardView());
+		pieceAppender.appendPosition(chessGame.getBoardRepresentation().getLightPieces());
+		pieceAppender.appendPosition(chessGame.getBoardRepresentation().getDarkPieces());
 	}
 	
 	private void endPuzzle() {

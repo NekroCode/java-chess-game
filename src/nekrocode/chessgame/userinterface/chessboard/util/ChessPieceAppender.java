@@ -1,11 +1,9 @@
 package nekrocode.chessgame.userinterface.chessboard.util;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import nekrocode.chessgame.chess.pieces.ChessPiece;
 import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
-import nekrocode.chessgame.userinterface.chessboard.SquarePanel;
 import nekrocode.chessgame.userinterface.chesspieces.ChessPiecePanel;
 
 /**
@@ -26,13 +24,15 @@ public class ChessPieceAppender {
 		this.view = view;
 	}
 	
-	public void appendPosition(HashMap<byte[], ChessPiece> pieces) {
+	public void appendPosition(Map<byte[], ChessPiece> pieces) {
 		for (Map.Entry<byte[], ChessPiece> entry : pieces.entrySet()) {
 			byte rank = entry.getKey()[0];
 			byte file = entry.getKey()[1];
 			ChessPiece chessPiece = entry.getValue();
 			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece, rank, file);
 			view.getSquarePanels().get(rank).get(file).addChessPiece(chessPiecePanel);
+			view.revalidate();
+			view.repaint();
 		}
 	}
 	

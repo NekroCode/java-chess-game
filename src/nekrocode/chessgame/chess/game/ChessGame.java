@@ -7,7 +7,6 @@ import nekrocode.chessgame.chess.board.Chessboard;
 public class ChessGame {
 	
 	private BoardRepresentation boardRepresentation;
-	private Chessboard chessboard;
 	
 	/**
 	 * Construct a chess game based on a given board representation
@@ -15,12 +14,11 @@ public class ChessGame {
 	 */
 	public ChessGame(BoardRepresentation boardRepresentation) {
 		this.boardRepresentation = boardRepresentation;
-		chessboard = new Chessboard(boardRepresentation.getBoardPosition(), boardRepresentation.getToMove());
 	}
 	
 	/**
-	 * TODO 
 	 * Construct a chess game based on the given FEN position
+	 * TODO implement feature when the project needs it
 	 */
 	public ChessGame(StartingPosition startingPosition) {
 		
@@ -31,7 +29,7 @@ public class ChessGame {
 	}
 	
 	public Chessboard getChessboard() {
-		return chessboard;
+		return new Chessboard(boardRepresentation, boardRepresentation.getToMove());
 	}
 	
 }

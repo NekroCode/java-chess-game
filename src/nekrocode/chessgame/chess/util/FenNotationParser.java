@@ -15,6 +15,15 @@ import java.util.regex.Pattern;
  * - Board information
  * - Moves to be made
  * 
+ * The Map<String, String> keys are as follows:
+ * boardPosition
+ * toMove
+ * moveSet
+ * castling
+ * enPassant
+ * halfMoveClock
+ * gameInfo
+ * 
  * WARNING: This class currently does not throw any error when something goes wrong so it's open for bugs.
  * - Example: Reading out the moves requires a whitespace between the move number and actual move to pass the regex.
  *   (1. e4 instead of 1.e4). In case of the latter the puzzle might break due to an incorrect move set.
@@ -62,8 +71,8 @@ public class FenNotationParser {
 	
 	private Map<String, String> processElements(String gameInfo, String boardInfo, String moves) {
 		Map<String, String> chessPuzzle = new HashMap<String, String>();
-		chessPuzzle.put("gameInfo", gameInfo);
 		processBoardInfo(boardInfo, chessPuzzle);
+		chessPuzzle.put("gameInfo", gameInfo);
 		processMoves(moves, chessPuzzle);
 		return chessPuzzle;
 	}

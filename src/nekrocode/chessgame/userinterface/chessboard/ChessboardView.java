@@ -29,18 +29,20 @@ public class ChessboardView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private List<List<SquarePanel>> squarePanels;
-	private ChessColor orientation;
+	private Chessboard chessboard;
 	private PieceManager pieceManager;
 	
-	public ChessboardView(ChessColor orientation) {
+	public ChessboardView(Chessboard chessboard) {
 		setLayout(new GridLayout(Chessboard.TOTAL_RANKS, Chessboard.TOTAL_FILES));
-		this.orientation = orientation;
+		ChessColor orientation;
+		if (chessboard != null) { 
+			setChessboard(chessboard);
+			orientation = chessboard.getOrientation(); 
+		} else { orientation = ChessColor.LIGHT; }
 		squarePanels = createSquarePanels();
 		if (orientation == ChessColor.DARK) {
-			drawDarkOrientation();
-		} else {
-			drawLightOrientation();
-		}
+			drawDarkOrientation(); } 
+		else { drawLightOrientation(); }
 	}
 	
 	public void manageInput(ChessPiece chessPiece, SquarePanel squarePanel) {
@@ -100,6 +102,10 @@ public class ChessboardView extends JPanel {
 	
 	public List<List<SquarePanel>> getSquarePanels() {
 		return squarePanels;
+	}
+	
+	public void setChessboard(Chessboard chessboard) {
+		this.chessboard = chessboard;
 	}
 	
 	public void setPieceManager(PieceManager pieceManager) {

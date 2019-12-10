@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import nekrocode.chessgame.chess.game.BoardRepresentation;
 import nekrocode.chessgame.chess.game.enums.ChessColor;
 
 /**
@@ -19,11 +20,12 @@ public class Chessboard {
 	// TODO Remove total ranks + files to user interface environment?
 	public static final int TOTAL_RANKS = 8;
 	public static final int TOTAL_FILES = TOTAL_RANKS;
-	private char[][] boardPosition;
+	private BoardRepresentation boardRepresentation;
+	//private char[][] boardPosition;
 	private ChessColor orientation;
 	
-	public Chessboard(char[][] boardPosition, ChessColor orientation) {
-		this.boardPosition = boardPosition;
+	public Chessboard(BoardRepresentation boardRepresentation, ChessColor orientation) {
+		this.boardRepresentation = boardRepresentation;
 		this.orientation = orientation;
 	}
 	
@@ -40,7 +42,7 @@ public class Chessboard {
 		int end = 10;
 		int index = start;
 		for (int i = 0; i < size; i++) {
-			rank = Arrays.copyOfRange(this.boardPosition[index], start, end);
+			rank = Arrays.copyOfRange(boardRepresentation.getBoardPosition()[index], start, end);
 			boardPosition[i] = rank;
 			index++;
 		}

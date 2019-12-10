@@ -16,6 +16,7 @@ public class PuzzleModeView extends JPanel {
 	private static final long serialVersionUID = 7252106225111030284L;
 	private PuzzleManager puzzleManager;
 	private PuzzleControlPanel puzzleControlPanel;
+	private ChessboardView chessboardView;
 	
 	public PuzzleModeView() {
 		GridBagLayout gridBag = new GridBagLayout();
@@ -25,7 +26,7 @@ public class PuzzleModeView extends JPanel {
 		GridBagAppender appender = new GridBagAppender(gridBag, c, this);
 		
 		puzzleControlPanel = new PuzzleControlPanel(this);
-		ChessboardView chessboardView = new ChessboardView(null);
+		chessboardView = new ChessboardView(null);
 		appender.appendComponent(chessboardView, 1, 1, 1, 5);
 		appender.appendComponent(new PuzzleStatisticsPanel(), 2, 1, 1, 1);
 		appender.appendComponent(puzzleControlPanel, 1, 6, 1, 1);
@@ -44,6 +45,10 @@ public class PuzzleModeView extends JPanel {
 	
 	public void nextPuzzle() {
 		puzzleManager.nextPuzzle();
+	}
+	
+	public ChessboardView getChessboardView() {
+		return chessboardView;
 	}
 	
 }

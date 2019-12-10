@@ -35,10 +35,11 @@ public class MyMenuBar extends JMenuBar {
 				+ "Images used: \n"
 				+ "- https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces \n\n"
 				+ "Improvement notes for version 0.2: \n"
+				+ "- Making the code less messy! \n"
 				+ "- Better abstraction between the backend, backend conversion and the graphical user interface where possible. \n"
 				+ "- Improve existing code by making use of interfaces where posssible. \n"
 				+ "- Finding new techniques to improve memory usage and performance. \n"
-				+ "- Eliminate some code duplication.");
+				+ "- Eliminate code duplication.");
 		dialog.add(p);
 		dialog.pack();
 		dialog.setLocation(frame.getLocation());

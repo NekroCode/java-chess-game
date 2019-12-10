@@ -1,7 +1,7 @@
 package nekrocode.chessgame.chess.game;
 
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 import nekrocode.chessgame.chess.game.enums.ChessColor;
 import nekrocode.chessgame.chess.pieces.ChessPiece;
@@ -37,8 +37,8 @@ public class BoardRepresentation {
 	public static int BOARD_END = 10;
 	
 	private char[][] boardPosition;
-	private HashMap<byte[], ChessPiece> lightPieces;
-	private HashMap<byte[], ChessPiece> darkPieces;
+	private Map<byte[], ChessPiece> lightPieces;
+	private Map<byte[], ChessPiece> darkPieces;
 	private ChessColor toMove;
 	
 	public BoardRepresentation(char[][] boardPosition,
@@ -63,11 +63,11 @@ public class BoardRepresentation {
 		return toMove;
 	}
 	
-	public HashMap<byte[], ChessPiece> getLightPieces() {
+	public Map<byte[], ChessPiece> getLightPieces() {
 		return lightPieces;
 	}
 	
-	public HashMap<byte[], ChessPiece> getDarkPieces() {
+	public Map<byte[], ChessPiece> getDarkPieces() {
 		return darkPieces;
 	}
 }

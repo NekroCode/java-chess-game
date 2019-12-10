@@ -4,7 +4,7 @@ import javax.swing.JButton;
 
 import nekrocode.chessgame.chess.game.ChessGame;
 import nekrocode.chessgame.chess.util.FenNotationParser;
-import nekrocode.chessgame.chess.util.FenParserManager;
+import nekrocode.chessgame.chess.util.FenParsingManager;
 import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
 
 public class PuzzleManager {
@@ -39,7 +39,7 @@ public class PuzzleManager {
 	}
 	
 	private void loadPuzzles() {
-		
+		FenParsingManager m = new FenParsingManager();
 	}
 	
 }

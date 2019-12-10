@@ -36,7 +36,7 @@ public class FenNotationParser {
 	 * @param file
 	 * @throws FileNotFoundException
 	 */
-	public void parseNotation(File file) throws FileNotFoundException {
+	public List<Map<String, String>> parseNotation(File file) throws FileNotFoundException {
 		Scanner scanner = new Scanner(file);
 		List<String> games = new ArrayList<String>();
 		while (scanner.hasNext()) {
@@ -46,7 +46,7 @@ public class FenNotationParser {
 			}
 		}
 		scanner.close();
-		List<Map<String, String>> chessPuzzles = processLines(games);
+		return processLines(games);
 	}
 	
 	// Return Map<String, String> object
@@ -72,7 +72,9 @@ public class FenNotationParser {
 	// Or could I at least declare it in a more semantic way?
 	private void processBoardInfo(String boardInfo, Map<String, String> chessPuzzle) {
 		String[] elements = boardInfo.split(" ");
-		chessPuzzle.put("boardPosition", elements[0]);
+		String position = elements[0];
+		if (!FenPositionParser.positionIsValid(elements[0])) { return; }
+		chessPuzzle.put("boardPosition", position);
 		chessPuzzle.put("toMove", elements[1]);
 		chessPuzzle.put("castling", elements[2]);
 		chessPuzzle.put("enPassant", elements[3]);
@@ -85,7 +87,6 @@ public class FenNotationParser {
 		for (int i = 0; i < patterns.length; i++) {
 			builder.append(patterns[i] + "|");
 		}
-		
 		StringBuilder moveSet = new StringBuilder();
 		for (String object : elements) {
 			if (Pattern.matches(builder.toString(), object)) {

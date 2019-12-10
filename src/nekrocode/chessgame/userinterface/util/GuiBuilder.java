@@ -37,10 +37,10 @@ public class GuiBuilder {
 		//changeContentPane(new MainMenuView());
 		//changeContentPane(new TestPanel());
 		changeContentPane(new PuzzleModeView());
-		//frame.pack();
-		//frame.setLocationRelativeTo(null);
-		//frame.setVisible(true);
-		System.exit(0);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		//System.exit(0);
 	}
 	
 	private void changeContentPane(JPanel panel) {

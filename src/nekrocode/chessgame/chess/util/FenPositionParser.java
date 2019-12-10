@@ -86,8 +86,16 @@ public class FenPositionParser {
 	}
 	
 	private void validateFENFormat(String position) throws FenNotationException {
-		if (!position.matches("([rnbqkpRNBQKP1-8]{1,8}/){7}([rnbqkpRNBQKP1-8]{1,8})")) {
+		if (!positionIsValid(position)) {
 			throw new FenNotationException("Incorrect FEN format.");
+		}
+	}
+	
+	public static boolean positionIsValid(String position) {
+		if (position.matches("([rnbqkpRNBQKP1-8]{1,8}/){7}([rnbqkpRNBQKP1-8]{1,8})")) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }

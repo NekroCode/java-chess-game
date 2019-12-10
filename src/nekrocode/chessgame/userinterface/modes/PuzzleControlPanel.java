@@ -16,6 +16,8 @@ public class PuzzleControlPanel extends JPanel {
 		nextBtn = new JButton("Next");
 		startBtn.addActionListener(o -> view.startSession());
 		nextBtn.addActionListener(o -> view.nextPuzzle());
+		startBtn.setEnabled(false);
+		nextBtn.setEnabled(false);
 		add(startBtn);
 		add(nextBtn);
 	}

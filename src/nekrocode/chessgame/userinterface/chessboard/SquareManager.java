@@ -33,13 +33,13 @@ public class SquareManager {
 	}
 	
 	private void handleSquareMarkers(ChessPiece chessPiece) {
-		List<List<Byte>> legalMoves = chessPiece.getLegalMoves();
-		for (List<Byte> position : legalMoves) {
-			ChessboardView view = pieceManager.getChessboardView();
-			SquarePanel panel = view.getSquarePanels().get(position.get(0)).get(position.get(1));
-			markedPanels.add(panel);
-			highlighter.addSelectionBackground(panel);
-		}
+//		List<List<Byte>> legalMoves = chessPiece.getLegalMoves();
+//		for (List<Byte> position : legalMoves) {
+//			ChessboardView view = pieceManager.getChessboardView();
+//			SquarePanel panel = view.getSquarePanels().get(position.get(0)).get(position.get(1));
+//			markedPanels.add(panel);
+//			highlighter.addSelectionBackground(panel);
+//		}
 	}
 	
 	public void removeSelection() {

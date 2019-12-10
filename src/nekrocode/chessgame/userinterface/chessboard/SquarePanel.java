@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.game.enums.ChessColor;
-import nekrocode.chessgame.chess.pieces.ChessPiece;
 import nekrocode.chessgame.userinterface.chesspieces.ChessPiecePanel;
 
 /**
@@ -31,17 +30,14 @@ public class SquarePanel extends JPanel {
 		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
 		addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent me) {
-				try {
-					ChessPiece chessPiece = chessPiecePanel.getChessPiece();
-					handleInput(chessPiece);
-				} catch (Exception e) {}
+			public void mousePressed(MouseEvent e) {
+				handleInput();
 			}
 		});
 	}
 	
-	public void handleInput(ChessPiece chessPiece) {
-		chessboardView.manageInput(chessPiece, this);
+	public void handleInput() {
+		chessboardView.manageInput(this);
 	}
 	
 	public void addChessPiece(ChessPiecePanel chessPiecePanel) {
@@ -62,6 +58,10 @@ public class SquarePanel extends JPanel {
 		removeAll();
 		revalidate();
 		repaint();
+	}
+	
+	public ChessPiecePanel getChessPiecePanel() {
+		return chessPiecePanel;
 	}
 	
 }

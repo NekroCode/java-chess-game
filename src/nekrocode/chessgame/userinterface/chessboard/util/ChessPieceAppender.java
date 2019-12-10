@@ -31,9 +31,9 @@ public class ChessPieceAppender {
 			ChessPiece chessPiece = entry.getValue();
 			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece, rank, file);
 			view.getSquarePanels().get(rank).get(file).addChessPiece(chessPiecePanel);
-			view.revalidate();
-			view.repaint();
 		}
+		view.revalidate();
+		view.repaint();
 	}
 	
 }

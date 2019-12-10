@@ -19,13 +19,11 @@ public class PieceManager {
 		squareManager = new SquareManager(this);
 	}
 	
-	public void handleInput(ChessPiece chessPiece, SquarePanel squarePanel) {
-		if (player.getColor() != chessPiece.getColor()) {
-			squareManager.removeSelection();
-			return;
-		}
-		selectedPiece = chessPiece;
-		squareManager.manageSelection(chessPiece, squarePanel);
+	public void handleInput(SquarePanel squarePanel) {
+		ChessPiecePanel piecePanel = squarePanel.getChessPiecePanel();
+		if (piecePanel == null || piecePanel.getChessPiece().getColor() != player.getColor()) { return; }
+		selectedPiece = piecePanel.getChessPiece();
+		squareManager.manageSelection(selectedPiece, squarePanel);
 	}
 	
 	public ChessboardView getChessboardView() {

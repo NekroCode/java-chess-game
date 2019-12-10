@@ -9,10 +9,12 @@ import javax.swing.JButton;
 import nekrocode.chessgame.chess.game.ChessGame;
 import nekrocode.chessgame.chess.game.ChessGameBuilder;
 import nekrocode.chessgame.chess.game.enums.ChessColor;
+import nekrocode.chessgame.chess.players.Player;
 import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenParsingManager;
 import nekrocode.chessgame.chess.util.FenPositionParser;
 import nekrocode.chessgame.userinterface.chessboard.util.ChessPieceAppender;
+import nekrocode.chessgame.userinterface.chesspieces.PieceManager;
 import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
 
 /**
@@ -39,7 +41,7 @@ public class PuzzleManager {
 		startBtn.setEnabled(true);
 		
 		// temp
-		//skip();
+		skip();
 	}
 	
 	/**
@@ -52,7 +54,6 @@ public class PuzzleManager {
 	public void startSession() {
 		startBtn.setEnabled(false);
 		createPuzzle();
-		System.out.println("started");
 	}
 	
 	/**
@@ -84,6 +85,9 @@ public class PuzzleManager {
 		ChessPieceAppender pieceAppender = new ChessPieceAppender(puzzleModeView.getChessboardView());
 		pieceAppender.appendPosition(chessGame.getBoardRepresentation().getLightPieces());
 		pieceAppender.appendPosition(chessGame.getBoardRepresentation().getDarkPieces());
+		
+		Player player = new Player(ChessColor.LIGHT, null);
+		puzzleModeView.getChessboardView().setPieceManager(new PieceManager(player, puzzleModeView.getChessboardView()));
 	}
 	
 	private void endPuzzle() {
@@ -94,6 +98,7 @@ public class PuzzleManager {
 		nextBtn.setEnabled(false);
 	}
 	
+	// TODO Needs proper validation.
 	private void parsePuzzles() {
 		puzzleCollection = new ArrayList<List<Map<String, String>>>();
 		FenParsingManager parsingManager = new FenParsingManager();

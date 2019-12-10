@@ -29,26 +29,22 @@ public class ChessboardView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private List<List<SquarePanel>> squarePanels;
-	private Chessboard chessboard;
+	private ChessColor orientation;
 	private PieceManager pieceManager;
 	
-	public ChessboardView(Chessboard chessboard) {
+	public ChessboardView(ChessColor orientation) {
 		setLayout(new GridLayout(Chessboard.TOTAL_RANKS, Chessboard.TOTAL_FILES));
-		ChessColor orientation;
-		if (chessboard != null) { 
-			setChessboard(chessboard);
-			orientation = chessboard.getOrientation(); 
-		} else { orientation = ChessColor.LIGHT; }
+		if (orientation == null) { this.orientation = ChessColor.LIGHT; } 
+			else { this.orientation = orientation; }
 		squarePanels = createSquarePanels();
-		if (orientation == ChessColor.DARK) {
-			drawDarkOrientation(); } 
-		else { drawLightOrientation(); }
+		if (orientation == ChessColor.LIGHT) { drawDarkOrientation(); } 
+			else { drawLightOrientation(); }
 	}
 	
-	public void manageInput(ChessPiece chessPiece, SquarePanel squarePanel) {
+	public void manageInput(SquarePanel squarePanel) {
 		if (pieceManager != null) {
-			pieceManager.handleInput(chessPiece, squarePanel);
-		} 
+			pieceManager.handleInput(squarePanel);
+		}
 	}
 	
 	private void drawLightOrientation() {
@@ -104,12 +100,23 @@ public class ChessboardView extends JPanel {
 		return squarePanels;
 	}
 	
-	public void setChessboard(Chessboard chessboard) {
-		this.chessboard = chessboard;
-	}
-	
 	public void setPieceManager(PieceManager pieceManager) {
 		this.pieceManager = pieceManager;
+	}
+	
+	public void setOrientation(ChessColor orientation) {
+		this.orientation = orientation;
+	}
+	
+	public void flipBoard() {
+		removeAll();
+		if (orientation == ChessColor.DARK) {
+			orientation = ChessColor.LIGHT;
+			drawLightOrientation();
+		} else if (orientation == ChessColor.LIGHT) {
+			orientation = ChessColor.DARK;
+			drawDarkOrientation();
+		}
 	}
 	
 }

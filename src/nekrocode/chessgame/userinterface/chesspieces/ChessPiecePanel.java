@@ -37,6 +37,11 @@ public class ChessPiecePanel extends JPanel {
 		} catch (Exception e) { System.out.println("Error: Image not found: " + chessPiece.toString() + ": " + chessPiece.getColor()); }
 	}
 	
+	// TODO Temp for testing
+	public String toString() {
+		return chessPiece.toString();
+	}
+	
 	private String getImageURLAsString(ChessPiece chessPiece) {
 		String url = "imgs/" + chessPiece.toString().toLowerCase();;
 		String color;

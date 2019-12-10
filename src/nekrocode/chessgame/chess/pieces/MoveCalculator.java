@@ -2,14 +2,11 @@ package nekrocode.chessgame.chess.pieces;
 
 public class MoveCalculator {
 	
-	public byte[] calculateMove(byte file, byte rank) {	
-		byte x = 0;
-		byte y = 0;
+	public byte[] calculateMove(byte[] position, byte[] moveSet) {
+		byte file = position[0];
+		byte rank = position[1];
 		
-		byte newFile = x += file;
-		byte newRank = y += rank;
-		
-		return new byte[] {newFile, newRank};
+		return null;
 	}
 	
 }

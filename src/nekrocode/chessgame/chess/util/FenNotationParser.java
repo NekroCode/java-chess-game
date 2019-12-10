@@ -15,6 +15,11 @@ import java.util.regex.Pattern;
  * - Board information
  * - Moves to be made
  * 
+ * WARNING: This class currently does not throw any error when something goes wrong so it's open for bugs.
+ * - Example: Reading out the moves requires a whitespace between the move number and actual move to pass the regex.
+ *   (1. e4 instead of 1.e4). In case of the latter the puzzle might break due to an incorrect move set.
+ *   Output should be tested thoroughly to see if any legal move is caught out.
+ * 
  * TODO
  * - Better code implementation. Currently in testing stage
  * 
@@ -41,35 +46,26 @@ public class FenNotationParser {
 			}
 		}
 		scanner.close();
-		processLines(games);
-		//List<Map<String, String>> chessPuzzles = new ArrayList<Map<String, String>>();
+		List<Map<String, String>> chessPuzzles = processLines(games);
 	}
 	
 	// Return Map<String, String> object
-	private void processLines(List<String> games) {
+	private List<Map<String, String>> processLines(List<String> games) {
 		int size = games.size();
 		final int increment = 3;
 		List<Map<String, String>> chessPuzzles = new ArrayList<Map<String, String>>();
 		for (int i = 0; i < size; i+=increment) {
-			processElements(games.get(i), games.get(i+1), games.get(i+2));
+			chessPuzzles.add(processElements(games.get(i), games.get(i+1), games.get(i+2)));
 		}
+		return chessPuzzles;
 	}
 	
-	private void processElements(String gameInfo, String boardInfo, String moves) {
+	private Map<String, String> processElements(String gameInfo, String boardInfo, String moves) {
 		Map<String, String> chessPuzzle = new HashMap<String, String>();
 		chessPuzzle.put("gameInfo", gameInfo);
 		processBoardInfo(boardInfo, chessPuzzle);
 		processMoves(moves, chessPuzzle);
-//		System.out.println(chessPuzzle.get("boardPosition"));
-//		System.out.println(chessPuzzle.get("toMove"));
-//		System.out.println(chessPuzzle.get("castling"));
-//		System.out.println(chessPuzzle.get("enPassant"));
-//		System.out.println(chessPuzzle.get("halfMoveClock"));
-//		System.out.println(gameInfo);
-//		System.out.println(boardInfo);
-//		System.out.println(moves);
-		System.out.println("------");
-		
+		return chessPuzzle;
 	}
 	
 	// I don't like splitting based on an empty whitespace
@@ -83,7 +79,6 @@ public class FenNotationParser {
 		chessPuzzle.put("halfMoveClock", elements[4] + " " + elements[5]);
 	}
 	
-	// A better way of checking valid values is with regex. Implement at a later time.
 	private void processMoves(String moves, Map<String, String> chessPuzzle) {
 		String[] elements = moves.split(" ");
 		StringBuilder builder = new StringBuilder();
@@ -91,9 +86,13 @@ public class FenNotationParser {
 			builder.append(patterns[i] + "|");
 		}
 		
-		for (String s : elements) {
-			System.out.println(Pattern.matches(builder.toString(), s) + " : " + s);
+		StringBuilder moveSet = new StringBuilder();
+		for (String object : elements) {
+			if (Pattern.matches(builder.toString(), object)) {
+				moveSet.append(object + "/");
+			}
 		}
+		chessPuzzle.put("moveSet", moveSet.toString());
 	}
 	
 	// Very ugly but will do for now. Very possible that it's still missing some necessary entries

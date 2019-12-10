@@ -26,7 +26,7 @@ public class FenPositionParser {
 	public char[][] parsePosition(String position) throws FenNotationException {
 		try { 
 			validateFENFormat(position);
-			String[] positions = splitPosition(position);
+			String[] positions = position.split("/");
 			return getBoardAsArray(positions);
 		} catch (FenNotationException e) {throw e;}
 	}
@@ -89,12 +89,5 @@ public class FenPositionParser {
 		if (!position.matches("([rnbqkpRNBQKP1-8]{1,8}/){7}([rnbqkpRNBQKP1-8]{1,8})")) {
 			throw new FenNotationException("Incorrect FEN format.");
 		}
-	}
-	
-	// TODO I may want to refactor this method to something global if it turns
-	// out I need to re-use it for something else
-	private String[] splitPosition(String notation) {
-		String[] positions = notation.split("/");
-		return positions;
 	}
 }

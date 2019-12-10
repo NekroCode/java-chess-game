@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 /**
- * This class is responsible for parsing FEN notations/
+ * This class is responsible for parsing FEN notations in algebraic notation form.
  * It currently requires the notation to be three lines long in the following order:
  * - Game information
  * - Board information
@@ -59,15 +59,17 @@ public class FenNotationParser {
 		Map<String, String> chessPuzzle = new HashMap<String, String>();
 		chessPuzzle.put("gameInfo", gameInfo);
 		processBoardInfo(boardInfo, chessPuzzle);
-		System.out.println(chessPuzzle.get("boardPosition"));
-		System.out.println(chessPuzzle.get("toMove"));
-		System.out.println(chessPuzzle.get("castling"));
-		System.out.println(chessPuzzle.get("enPassant"));
-		System.out.println(chessPuzzle.get("halfMoveClock"));
+		processMoves(moves, chessPuzzle);
+//		System.out.println(chessPuzzle.get("boardPosition"));
+//		System.out.println(chessPuzzle.get("toMove"));
+//		System.out.println(chessPuzzle.get("castling"));
+//		System.out.println(chessPuzzle.get("enPassant"));
+//		System.out.println(chessPuzzle.get("halfMoveClock"));
 //		System.out.println(gameInfo);
 //		System.out.println(boardInfo);
 //		System.out.println(moves);
 		System.out.println("------");
+		
 	}
 	
 	// I don't like splitting based on an empty whitespace
@@ -81,8 +83,56 @@ public class FenNotationParser {
 		chessPuzzle.put("halfMoveClock", elements[4] + " " + elements[5]);
 	}
 	
-	private void processMoves() {
+	// A better way of checking valid values is with regex. Implement at a later time.
+	private void processMoves(String moves, Map<String, String> chessPuzzle) {
+		String[] elements = moves.split(" ");
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < patterns.length; i++) {
+			builder.append(patterns[i] + "|");
+		}
 		
+		for (String s : elements) {
+			System.out.println(Pattern.matches(builder.toString(), s) + " : " + s);
+		}
 	}
+	
+	// Very ugly but will do for now. Very possible that it's still missing some necessary entries
+	// or that some of the existing entries contain errors.
+	private String[] patterns = new String[] {
+			
+			"[a-h][1-8]", // Regular pawn move 
+			"[a-h]x[a-h][1-8]", // Pawn capture 
+			"[a-h][1-8]\\+", // Pawn check
+			"[a-h]x[a-h][1-8]\\+", // Pawn capture + check
+			"[a-h][1-8]#", // Pawn checkmate
+			"[a-h]x[a-h][1-8]#", // Pawn capture + checkmate
+			"[a-h][1-8]=[RBNQ]#",// Pawn promotion
+			"[a-h][1-8]=[RBNQ]",// Pawn promotion + capture
+			"[a-h][1-8]=[RBNQ]\\+",// Pawn promotion + check
+			"[a-h][1-8]=[RBNQ]#",// Pawn promotion + checkmate
+			"[a-h]x[a-h][1-8]=[RBNQ]\\+",// Pawn promotion + capture + check
+			"[a-h]x[a-h][1-8]=[RBNQ]#",// Pawn promotion + capture + checkmate
+			
+			"[BRQNK][a-h][1-8]", // Regular piece move 
+			"[BRQNK]x[a-h][1-8]", // Piece capture
+			"[BRQNK][a-h][1-8]\\+", // Piece check
+			"[BRQNK]x[a-h][1-8]\\+", // Piece capture + check
+			"[BRQNK][a-h][1-8]#", // Piece checkmate
+			"[BRQNK]x[a-h][1-8]#", // Piece capture + checkmate
+			
+			"[BRQNK][a-h][a-h][1-8]", // Piece file move
+			"[BRQNK][a-h]x[a-h][1-8]", // Piece file capture
+			"[BRQNK][a-h][a-h][1-8]\\+", // Piece file check
+			"[BRQNK][a-h][a-h][1-8]#", // Piece file checkmate
+			"[BRQNK][a-h]x[a-h][1-8]#", // Piece file capture + checkmate
+			"[BRQNK][a-h]x[a-h][1-8]\\+", // Piece file capture + check
+			
+			"[BRQNK][1-8][a-h][1-8]", // Piece rank move
+			"[BRQNK][1-8]x[a-h][1-8]", // Piece rank capture
+			"[BRQNK][1-8][a-h][1-8]\\+", // Piece rank check
+			"[BRQNK][1-8][a-h][1-8]#", // Piece rank checmkate
+			"[BRQNK][1-8]x[a-h][1-8]#", // Piece rank capture + checkmate
+			"[BRQNK][1-8]x[a-h][1-8]\\+", // Piece rank capture + check	
+	};
 	
 }

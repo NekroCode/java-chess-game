@@ -29,6 +29,7 @@ public class GuiBuilder {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Nekro's Chess Application");
+		frame.setResizable(false);
 		// TODO Look into better ways of loading the image?
 		// Don't forget to also change the image and its dimension
 		//try { frame.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("imgs/icons/app_icon.png")).getImage()); } 

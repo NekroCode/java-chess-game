@@ -24,12 +24,13 @@ public class ChessPieceAppender {
 		this.view = view;
 	}
 	
-	public void appendPosition(Map<byte[], ChessPiece> pieces) {
-		for (Map.Entry<byte[], ChessPiece> entry : pieces.entrySet()) {
-			byte rank = entry.getKey()[0];
-			byte file = entry.getKey()[1];
+	public void appendPosition(Map<String, ChessPiece> pieces) {
+		for (Map.Entry<String, ChessPiece> entry : pieces.entrySet()) {
+			String position = entry.getKey();
+			int rank = Integer.parseInt(position.substring(0, 1));
+			int file = Integer.parseInt(position.substring(2, 3));
 			ChessPiece chessPiece = entry.getValue();
-			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece, rank, file);
+			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece);
 			view.getSquarePanels().get(rank).get(file).addChessPiece(chessPiecePanel);
 		}
 		view.revalidate();

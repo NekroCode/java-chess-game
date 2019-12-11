@@ -10,12 +10,12 @@ import nekrocode.chessgame.chess.pieces.PieceCreator;
 
 public class ChessGameBuilder {
 	
-	private HashMap<byte[], ChessPiece> lightPieces;
-	private HashMap<byte[], ChessPiece> darkPieces;
+	private HashMap<String, ChessPiece> lightPieces;
+	private HashMap<String, ChessPiece> darkPieces;
 	
 	public ChessGame createGame(char[][] boardPosition, ChessColor toMove) {
-		lightPieces = new HashMap<byte[], ChessPiece>();
-		darkPieces = new HashMap<byte[], ChessPiece>();
+		lightPieces = new HashMap<String, ChessPiece>();
+		darkPieces = new HashMap<String, ChessPiece>();
 		preparePieces(boardPosition);
 		BoardRepresentation boardRepresentation = new BoardRepresentation(boardPosition, lightPieces, darkPieces, toMove);
 		return new ChessGame(boardRepresentation);
@@ -44,8 +44,9 @@ public class ChessGameBuilder {
 		}
 	}
 	
-	private void insertChessPiece(ChessPiece chessPiece, byte rank, byte file) {
-		byte[] position = new byte[]{rank, file};
+	private void insertChessPiece(ChessPiece chessPiece, byte file, byte rank) {
+		//byte[] position = new byte[]{rank, file};
+		String position = file + "/" + rank;
 		ChessColor color = chessPiece.getColor();
 		if (color == ChessColor.LIGHT) {
 			lightPieces.put(position, chessPiece);

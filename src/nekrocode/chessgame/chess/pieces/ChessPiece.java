@@ -19,15 +19,15 @@ public abstract class ChessPiece {
 	// the size of the constructor increases.
 	// - Research the Builder Pattern
 	// - Better way of passing the move increment and move set values from sub class
-	protected final byte[][] MOVE_SET;
+	protected final byte[][] MOVE_SETS;
 	protected final int MOVE_INCREMENT;
-	protected List<List<Byte>> legalMoves;
+	protected List<byte[]> legalMoves;
 	
 	public ChessPiece(String name, char letter, ChessColor color, int moveIncrement, byte[][] moveSet) {
 		NAME = name;
 		LETTER = letter;
 		COLOR = color;
-		MOVE_SET = moveSet;
+		MOVE_SETS = moveSet;
 		MOVE_INCREMENT = moveIncrement;
 	}
 	
@@ -43,19 +43,19 @@ public abstract class ChessPiece {
 		return NAME;
 	}
 	
-	public byte[][] getMoveSet() {
-		return MOVE_SET;
+	public byte[][] getMoveSets() {
+		return MOVE_SETS;
 	}
 	
 	public int getMoveIncrement() {
 		return MOVE_INCREMENT;
 	}
 	
-	public void setLegalMoves(List<List<Byte>> legalMoves) {
+	public void setLegalMoves(List<byte[]> legalMoves) {
 		this.legalMoves = legalMoves;
 	}
 	
-	public List<List<Byte>> getLegalMoves() {
+	public List<byte[]> getLegalMoves() {
 		return legalMoves;
 	}
 	

@@ -18,14 +18,10 @@ public class ChessPiecePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private ChessPiece chessPiece;
-	private byte rank;
-	private byte file;
 	private Image image;
 	
-	public ChessPiecePanel(ChessPiece chessPiece, byte rank, byte file) {
+	public ChessPiecePanel(ChessPiece chessPiece) {
 		this.chessPiece = chessPiece;
-		this.rank = rank;
-		this.file = file;
 		setLayout(new GridLayout(1, 1));
 		setBackground(null);
 		// TODO Needs a better way of setting its dimension
@@ -56,14 +52,6 @@ public class ChessPiecePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-	}
-	
-	public byte getRank() {
-		return rank;
-	}
-	
-	public byte getFile() {
-		return file;
 	}
 	
 	public ChessPiece getChessPiece() {;

@@ -4,8 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import nekrocode.chessgame.chess.game.BoardRepresentation;
 import nekrocode.chessgame.chess.game.ChessGame;
 import nekrocode.chessgame.chess.game.ChessGameBuilder;
 import nekrocode.chessgame.chess.pieces.ChessPiece;
@@ -36,15 +39,36 @@ class MoveCalculatorTest {
 	
 	@Test
 	void test() {
-		MoveCalculator c = new MoveCalculator();
+		MoveCalculator calculator = new MoveCalculator();
 		ChessGame chessGame = new ChessGameBuilder().createGame(board, null);
-		Map<byte[], ChessPiece> pieces = chessGame.getBoardRepresentation().getLightPieces();
-//		for (Map.Entry<byte[], ChessPiece> map : pieces.entrySet()) {
-//			System.out.println(map.getKey()[0] + ":" + map.getKey()[1]);
+		Map<String, ChessPiece> pieces = chessGame.getBoardRepresentation().getLightPieces();
+//		for (Map.Entry<String, ChessPiece> map : pieces.entrySet()) {
+//			System.out.println(map.getKey());
 //		}
-		//ChessPiece piece = pieces.get(new byte[]{7, 7});
-		//System.out.println(new byte[]{7, 7} == new byte[]{7, 7});
+		String position = "7/7";
+		ChessPiece piece = pieces.get(position);
+		byte[][] moveSets = piece.getMoveSets();
 		
+		int x = Integer.parseInt(position.substring(0, 1));
+		int y = Integer.parseInt(position.substring(2, 3));
+//		file += moveSets[2][0];
+//		rank += moveSets[2][1];
+		
+		//System.out.println(board[rank+BoardRepresentation.BOARD_START][file+BoardRepresentation.BOARD_START]);
+		int boardStart = BoardRepresentation.BOARD_START;
+		List<byte[]> legalMoves = new ArrayList<byte[]>();
+		for (byte[] moveSet : moveSets) {
+			int newFile = moveSet[0]+x;
+			int newRank = moveSet[1]+y;
+			Character c = board[newRank+boardStart][newFile+boardStart];
+			if (!c.equals('-')) {
+				legalMoves.add(new byte[] {(byte)newFile, (byte)newRank});
+			}
+			//System.out.println(newFile + ":" + newRank);
+		}
+		for (byte[] list : legalMoves) {
+			System.out.println(list[0] + ":" + list[1]);
+		}
 	}
 
 }

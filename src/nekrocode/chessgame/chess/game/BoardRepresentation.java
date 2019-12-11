@@ -18,6 +18,10 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
  * - Upper case letters represent white pieces
  * - Lower case letters represent black pieces
  * 
+ * Map<String, ChessPiece> usage:
+ * - Key: String value containing the file and rank index separated by a dash /. Example: 7/7 would represent square a1. 0/0 represents a8.
+ * IMPORTANT: The first digit represents the file and the second the rank. 
+ * 
  * TODO 
  * - Define the board as an array of bytes for better memory usage
  * - Are the HashMaps really needed? If so, could I change the data structure for better memory usage?
@@ -37,13 +41,13 @@ public class BoardRepresentation {
 	public static int BOARD_END = 10;
 	
 	private char[][] boardPosition;
-	private Map<byte[], ChessPiece> lightPieces;
-	private Map<byte[], ChessPiece> darkPieces;
+	private Map<String, ChessPiece> lightPieces;
+	private Map<String, ChessPiece> darkPieces;
 	private ChessColor toMove;
 	
 	public BoardRepresentation(char[][] boardPosition,
-			HashMap<byte[], ChessPiece> lightPieces,
-			HashMap<byte[], ChessPiece> darkPieces,
+			HashMap<String, ChessPiece> lightPieces,
+			HashMap<String, ChessPiece> darkPieces,
 			ChessColor toMove) {
 		this.boardPosition = boardPosition;
 		this.lightPieces = lightPieces;
@@ -63,11 +67,11 @@ public class BoardRepresentation {
 		return toMove;
 	}
 	
-	public Map<byte[], ChessPiece> getLightPieces() {
+	public Map<String, ChessPiece> getLightPieces() {
 		return lightPieces;
 	}
 	
-	public Map<byte[], ChessPiece> getDarkPieces() {
+	public Map<String, ChessPiece> getDarkPieces() {
 		return darkPieces;
 	}
 }

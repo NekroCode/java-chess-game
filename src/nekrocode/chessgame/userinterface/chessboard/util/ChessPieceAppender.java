@@ -27,8 +27,8 @@ public class ChessPieceAppender {
 	public void appendPosition(Map<String, ChessPiece> pieces) {
 		for (Map.Entry<String, ChessPiece> entry : pieces.entrySet()) {
 			String position = entry.getKey();
-			int rank = Integer.parseInt(position.substring(0, 1));
-			int file = Integer.parseInt(position.substring(2, 3));
+			int file = Integer.parseInt(position.substring(0, 1));
+			int rank = Integer.parseInt(position.substring(2, 3));
 			ChessPiece chessPiece = entry.getValue();
 			ChessPiecePanel chessPiecePanel = new ChessPiecePanel(chessPiece);
 			view.getSquarePanels().get(rank).get(file).addChessPiece(chessPiecePanel);

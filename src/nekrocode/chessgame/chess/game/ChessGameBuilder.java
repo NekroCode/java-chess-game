@@ -44,8 +44,7 @@ public class ChessGameBuilder {
 		}
 	}
 	
-	private void insertChessPiece(ChessPiece chessPiece, byte file, byte rank) {
-		//byte[] position = new byte[]{rank, file};
+	private void insertChessPiece(ChessPiece chessPiece, byte rank, byte file) {
 		String position = file + "/" + rank;
 		ChessColor color = chessPiece.getColor();
 		if (color == ChessColor.LIGHT) {

@@ -100,7 +100,7 @@ public class PuzzleManager {
 			byte file = (byte)Integer.parseInt(position.substring(0, 1));
 			byte rank = (byte)Integer.parseInt(position.substring(2, 3));
 			System.out.println(file + ":" + rank);
-			//piece.setLegalMoves(calc.calculateLegalMoves(new byte[] {file, rank}, piece.getMoveSets(), piece.getMoveIncrement(), board));
+			piece.setLegalMoves(calc.calculateLegalMoves(new byte[] {file, rank}, piece.getMoveSets(), piece.getMoveIncrement(), board));
 			//System.out.println(calc.calculateLegalMoves(new byte[] {file, rank}, piece.getMoveSets(), piece.getMoveIncrement(), board));
 		}
 		

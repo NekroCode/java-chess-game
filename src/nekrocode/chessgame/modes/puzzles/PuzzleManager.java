@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import nekrocode.chessgame.chess.game.ChessGame;
 import nekrocode.chessgame.chess.game.ChessGameBuilder;
 import nekrocode.chessgame.chess.game.enums.ChessColor;
+import nekrocode.chessgame.chess.pieces.ChessPiece;
+import nekrocode.chessgame.chess.pieces.MoveCalculator;
 import nekrocode.chessgame.chess.players.Player;
 import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenParsingManager;
@@ -57,6 +59,9 @@ public class PuzzleManager {
 	}
 	
 	/**
+	 * 
+	 * CURRENTLY IN TESTING STAGE
+	 * 
 	 * TODO
 	 * - Clean this method and divide abstraction between functionality
 	 * - Handle catch clause
@@ -85,6 +90,19 @@ public class PuzzleManager {
 		ChessPieceAppender pieceAppender = new ChessPieceAppender(puzzleModeView.getChessboardView());
 		pieceAppender.appendPosition(chessGame.getBoardRepresentation().getLightPieces());
 		pieceAppender.appendPosition(chessGame.getBoardRepresentation().getDarkPieces());
+		
+		char[][] board = chessGame.getBoardRepresentation().getBoardPosition();
+		MoveCalculator calc = new MoveCalculator();
+		Map<String, ChessPiece> pieces = chessGame.getBoardRepresentation().getLightPieces();
+		for (Map.Entry<String, ChessPiece> entry : pieces.entrySet()) {
+			ChessPiece piece = entry.getValue();
+			String position = entry.getKey();
+			byte file = (byte)Integer.parseInt(position.substring(0, 1));
+			byte rank = (byte)Integer.parseInt(position.substring(2, 3));
+			System.out.println(file + ":" + rank);
+			//piece.setLegalMoves(calc.calculateLegalMoves(new byte[] {file, rank}, piece.getMoveSets(), piece.getMoveIncrement(), board));
+			//System.out.println(calc.calculateLegalMoves(new byte[] {file, rank}, piece.getMoveSets(), piece.getMoveIncrement(), board));
+		}
 		
 		Player player = new Player(ChessColor.LIGHT, null);
 		puzzleModeView.getChessboardView().setPieceManager(new PieceManager(player, puzzleModeView.getChessboardView()));

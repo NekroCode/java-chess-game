@@ -41,34 +41,59 @@ class MoveCalculatorTest {
 	void test() {
 		MoveCalculator calculator = new MoveCalculator();
 		ChessGame chessGame = new ChessGameBuilder().createGame(board, null);
-		Map<String, ChessPiece> pieces = chessGame.getBoardRepresentation().getLightPieces();
-//		for (Map.Entry<String, ChessPiece> map : pieces.entrySet()) {
-//			System.out.println(map.getKey());
-//		}
-		String position = "7/7";
-		ChessPiece piece = pieces.get(position);
-		byte[][] moveSets = piece.getMoveSets();
+		simulate();
+	}
+	
+	private void simulate() {
+		//byte[][] moveSets = new byte[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+		//byte[][] moveSets = new byte[][] {{1, 0}};
+//		String position = "0/7";
+//		int increment = 8;
+//		int file = Integer.parseInt(position.substring(0, 1));
+//		int rank = Integer.parseInt(position.substring(2, 3));
+//		calculateLegalMoves(new byte[] {(byte)file, (byte)rank}, moveSets, increment);
 		
-		int x = Integer.parseInt(position.substring(0, 1));
-		int y = Integer.parseInt(position.substring(2, 3));
-//		file += moveSets[2][0];
-//		rank += moveSets[2][1];
-		
-		//System.out.println(board[rank+BoardRepresentation.BOARD_START][file+BoardRepresentation.BOARD_START]);
-		int boardStart = BoardRepresentation.BOARD_START;
+		int start = BoardRepresentation.BOARD_START;
+		byte[][] moveSets = new byte[][] {{-1, 2}};
+		byte file = 4;
+		byte rank = 3;
+		calculateLegalMoves(new byte[] {(byte)file, (byte)rank}, moveSets, 1);
+	}
+	
+	private void calculateLegalMoves(byte[] position, byte[][] moveSets, int increment) {
 		List<byte[]> legalMoves = new ArrayList<byte[]>();
 		for (byte[] moveSet : moveSets) {
-			int newFile = moveSet[0]+x;
-			int newRank = moveSet[1]+y;
-			Character c = board[newRank+boardStart][newFile+boardStart];
-			if (!c.equals('-')) {
-				legalMoves.add(new byte[] {(byte)newFile, (byte)newRank});
-			}
-			//System.out.println(newFile + ":" + newRank);
+			processMoveSet(position, moveSet, increment, legalMoves);
 		}
-		for (byte[] list : legalMoves) {
-			System.out.println(list[0] + ":" + list[1]);
+		
+		SquareTranslator t = new SquareTranslator();
+		for (byte[] legalMove : legalMoves) {
+			System.out.println(t.getSquareName(legalMove[0], legalMove[1]));
 		}
+	}
+	
+	private void processMoveSet(byte[] position, byte[] moveSet, int increment, List<byte[]> legalMoves) {
+		int start = BoardRepresentation.BOARD_START;
+		for (int i = 0; i < increment; i++) {
+			byte[] newPosition = calculateMove(position[0], position[1], moveSet);
+			position = newPosition;
+			char c = board[newPosition[1]+start][newPosition[0]+start];
+			if (!isValid(c)) { break; }
+				else { legalMoves.add(newPosition); }
+		}
+	}
+	
+	private byte[] calculateMove(byte file, byte rank, byte[] moveSet) {
+		file += moveSet[0];
+		rank += moveSet[1];
+		return new byte[] {file, rank};
+	}
+	
+	private boolean isValid(Character c) {
+		if (c.equals('-')) {
+			return false;
+		}
+		return true;
 	}
 
 }

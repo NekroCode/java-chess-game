@@ -1,18 +1,20 @@
 package nekrocode.chessgame.chess.board;
 
 /**
- * This class has the capability to translate array indices to a String representing a square
+ * This class is responsible for translating array indices to a String respesenting a square name
  * 
- * TODO return indices based on given String
+ * TODO
+ * - Add exception handling 
+ * - Return indices based on given String
  * @author ~
  *
  */
 public class SquareTranslator {
 	
-	public String getSquareName(int fileIndex, int rank) {
+	public String getSquareName(int file, int rank) {
 		rank = Chessboard.TOTAL_RANKS - rank;
-		char file = Chessboard.getFileLetters().get(fileIndex);
-		return file + "" + rank ;
+		char fileLetter = Chessboard.getFileLetters().get(file);
+		return fileLetter + "" + rank ;
 	}
 	
 	// TODO build implementation

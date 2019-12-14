@@ -19,7 +19,7 @@ public class SquareHighlighter {
 	}
 	
 	public void removeSelectionBackground(SquarePanel squarePanel) {
-		squarePanel.setBackground(null);
+		squarePanel.setBackground(squarePanel.getColor());
 	}
 	
 }

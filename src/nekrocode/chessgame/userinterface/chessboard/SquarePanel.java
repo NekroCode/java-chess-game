@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import nekrocode.chessgame.chess.game.enums.ChessColor;
@@ -22,11 +23,14 @@ public class SquarePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private ChessboardView chessboardView;
 	private ChessPiecePanel chessPiecePanel;
+	private final Color color;
 	
 	public SquarePanel(ChessboardView chessboardView, Square square) {
 		this.chessboardView = chessboardView;
 		setLayout(new GridLayout(1,1));
-		setBackground(getColor(square));
+		color = assignColor(square);
+		//setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+		setBackground(color);
 		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
 		addMouseListener(new MouseAdapter() {
@@ -45,7 +49,7 @@ public class SquarePanel extends JPanel {
 		add(chessPiecePanel);
 	}
 	
-	private Color getColor(Square square) {
+	private Color assignColor(Square square) {
 		ChessColor color = square.getColor();
 		if (color == ChessColor.LIGHT) {
 			return ChessboardConfig.getLightColor();
@@ -62,6 +66,10 @@ public class SquarePanel extends JPanel {
 	
 	public ChessPiecePanel getChessPiecePanel() {
 		return chessPiecePanel;
+	}
+	
+	public Color getColor() {
+		return color;
 	}
 	
 }

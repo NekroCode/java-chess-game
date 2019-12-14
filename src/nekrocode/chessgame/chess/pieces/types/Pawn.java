@@ -5,8 +5,8 @@ import nekrocode.chessgame.chess.pieces.ChessPiece;
 
 public class Pawn extends ChessPiece {
 
-	public Pawn(ChessColor color) {
-		super("Pawn", 'P', color, 1, new byte[][] {{0, 1}});
+	public Pawn(ChessColor color, byte[][] moveSet) {
+		super("Pawn", 'P', color, 1, moveSet);
 	}
 
 }

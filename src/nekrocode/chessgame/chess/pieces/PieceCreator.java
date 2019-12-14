@@ -22,7 +22,7 @@ public class PieceCreator {
 		ChessPiece chessPiece = null;
 		switch (letter) {
 			case 'p' :
-				chessPiece = new Pawn(color);
+				chessPiece = new Pawn(color, assignPawnMoveSet(color));
 				break;
 			case 'n' :
 				chessPiece = new Knight(color);
@@ -54,11 +54,19 @@ public class PieceCreator {
 		}
 	}
 	
-//	Java 12's Case Label preview feature
-//	case "p" -> chessPiece = new Pawn('P', color);
-//	case "n" -> chessPiece = new Knight('N', color);
-//	case "b" -> chessPiece = new Bishop('B', color);
-//	case "r" -> chessPiece = new Rook('R', color);
-//	case "q" -> chessPiece = new Queen('Q', color);
-//	case "k" -> chessPiece = new King('K', color);
+	private byte[][] assignPawnMoveSet(ChessColor color) {
+		if (color == ChessColor.LIGHT) {
+			return new byte[][] {{0, -1}};
+		} else {
+			return new byte[][] {{0, 1}};
+		}
+	}
+	
 }
+//Java 12's Case Label preview feature
+//case "p" -> chessPiece = new Pawn('P', color);
+//case "n" -> chessPiece = new Knight('N', color);
+//case "b" -> chessPiece = new Bishop('B', color);
+//case "r" -> chessPiece = new Rook('R', color);
+//case "q" -> chessPiece = new Queen('Q', color);
+//case "k" -> chessPiece = new King('K', color);

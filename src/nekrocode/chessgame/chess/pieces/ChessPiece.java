@@ -3,7 +3,6 @@ package nekrocode.chessgame.chess.pieces;
 import java.util.ArrayList;
 import java.util.List;
 
-import nekrocode.chessgame.chess.board.SquareTranslator;
 import nekrocode.chessgame.chess.game.enums.ChessColor;
 
 /**
@@ -56,13 +55,6 @@ public abstract class ChessPiece {
 	
 	public void setLegalMoves(List<byte[]> legalMoves) {
 		this.legalMoves = legalMoves;
-		System.out.println(toString());
-		SquareTranslator t = new SquareTranslator();
-		for (byte[] move : legalMoves) {
-			System.out.println(t.getSquareName(move[0], move[1]));
-			//System.out.println(move[0] + ":" + move[1]);
-		}
-		System.out.println("----");
 	}
 	
 	public List<byte[]> getLegalMoves() {

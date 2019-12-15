@@ -21,6 +21,12 @@ public class FenParsingManager {
 		parser = new FenNotationParser();
 	}
 	
+	/**
+	 * Handle catch clause in a better way
+	 * 
+	 * @param url
+	 * @return
+	 */
 	public List<Map<String, String>> parseNotation(String url) {
 		File file;
 		try {

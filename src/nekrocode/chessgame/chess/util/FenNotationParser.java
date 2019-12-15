@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * The Map<String, String> keys are as follows:
  * boardPosition
  * toMove
- * moveSet
+ * moves
  * castling
  * enPassant
  * halfMoveClock
@@ -58,7 +58,6 @@ public class FenNotationParser {
 		return processLines(games);
 	}
 	
-	// Return Map<String, String> object
 	private List<Map<String, String>> processLines(List<String> games) {
 		int size = games.size();
 		final int increment = 3;
@@ -102,7 +101,7 @@ public class FenNotationParser {
 				moveSet.append(object + "/");
 			}
 		}
-		chessPuzzle.put("moveSet", moveSet.toString());
+		chessPuzzle.put("moves", moveSet.toString());
 	}
 	
 	// Very ugly but will do for now. Very possible that it's still missing some necessary entries

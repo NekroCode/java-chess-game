@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import nekrocode.chessgame.chess.game.enums.ChessColor;
 import nekrocode.chessgame.userinterface.chesspieces.ChessPiecePanel;
@@ -24,12 +25,13 @@ public class SquarePanel extends JPanel {
 	private ChessboardView chessboardView;
 	private ChessPiecePanel chessPiecePanel;
 	private final Color color;
+	public final static Border BORDER = BorderFactory.createLineBorder(Color.GRAY, 1);
 	
 	public SquarePanel(ChessboardView chessboardView, Square square) {
 		this.chessboardView = chessboardView;
 		setLayout(new GridLayout(1,1));
 		color = assignColor(square);
-		//setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+		setBorder(BORDER);
 		setBackground(color);
 		// TODO Needs a better way of setting its dimension
 		setPreferredSize(new Dimension(50, 50));
@@ -59,9 +61,11 @@ public class SquarePanel extends JPanel {
 	}
 	
 	public void emptySquare() {
-		removeAll();
-		revalidate();
-		repaint();
+		if (getComponentCount() > 0) {
+			removeAll();
+			revalidate();
+			repaint();
+		}
 	}
 	
 	public ChessPiecePanel getChessPiecePanel() {

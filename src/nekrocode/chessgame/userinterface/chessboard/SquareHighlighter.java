@@ -11,7 +11,7 @@ public class SquareHighlighter {
 	}
 	
 	public void removeSelectionBorder(SquarePanel squarePanel) {
-		squarePanel.setBorder(null);
+		squarePanel.setBorder(SquarePanel.BORDER);
 	}
 	
 	public void addSelectionBackground(SquarePanel squarePanel) {

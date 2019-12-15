@@ -65,6 +65,17 @@ public class ChessboardView extends JPanel {
 		}
 	}
 	
+	public void flipBoard() {
+		removeAll();
+		if (orientation == ChessColor.DARK) {
+			orientation = ChessColor.LIGHT;
+			drawLightOrientation();
+		} else if (orientation == ChessColor.LIGHT) {
+			orientation = ChessColor.DARK;
+			drawDarkOrientation();
+		}
+	}
+	
 	private List<List<SquarePanel>> createSquarePanels() {
 		List<List<SquarePanel>> squarePanels = new ArrayList<List<SquarePanel>>();
 		List<SquarePanel> row = new ArrayList<SquarePanel>();
@@ -108,15 +119,8 @@ public class ChessboardView extends JPanel {
 		this.orientation = orientation;
 	}
 	
-	public void flipBoard() {
-		removeAll();
-		if (orientation == ChessColor.DARK) {
-			orientation = ChessColor.LIGHT;
-			drawLightOrientation();
-		} else if (orientation == ChessColor.LIGHT) {
-			orientation = ChessColor.DARK;
-			drawDarkOrientation();
-		}
+	public ChessColor getOrientation() {
+		return orientation;
 	}
 	
 }

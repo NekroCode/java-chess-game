@@ -17,6 +17,7 @@ import nekrocode.chessgame.chess.players.Player;
 import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenParsingManager;
 import nekrocode.chessgame.chess.util.FenPositionParser;
+import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
 import nekrocode.chessgame.userinterface.chessboard.util.ChessPieceAppender;
 import nekrocode.chessgame.userinterface.chesspieces.PieceManager;
 import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
@@ -73,7 +74,7 @@ public class PuzzleManager {
 		updatePlayer(boardRepresentation);
 		drawChessPieces(boardRepresentation);
 		calculateLegalMoves(player.getChessPieces(), boardRepresentation.getBoardPosition());
-		//endPuzzle();
+		endPuzzle();
 	}
 	
 	private void updatePlayer(BoardRepresentation boardRepresentation) {
@@ -84,8 +85,10 @@ public class PuzzleManager {
 		} else {
 			player.setChessPieces(boardRepresentation.getDarkPieces());
 		}
-		// Check if I really have to instantiate a new piecemanager everytime. Could possibily do without.
-		puzzleModeView.getChessboardView().setPieceManager(new PieceManager(player, puzzleModeView.getChessboardView()));
+		ChessboardView chessboardView = puzzleModeView.getChessboardView();
+		if (player.getColor() != chessboardView.getOrientation()) { chessboardView.flipBoard(); }
+		// Check if I really have to instantiate a new piecemanager every time. Could possibly do without.
+		chessboardView.setPieceManager(new PieceManager(player, chessboardView));
 	}
 	
 	// TODO Everything in between // * * // should be divided into separate methods
@@ -163,51 +166,3 @@ public class PuzzleManager {
 	}
 	
 }
-
-///**
-//* 
-//* CURRENTLY IN TESTING STAGE. CODE IS MESSY
-//* 
-//* TODO
-//* - Clean this method and divide abstraction between functionality
-//* - Handle catch clause
-//*/
-//private void createPuzzle() {
-//	Map<String, String> puzzle = puzzleCollection.get(0).get(0);
-//	ChessColor toMove;
-//	if (puzzle.get("toMove").equals("w")) {
-//		toMove = ChessColor.LIGHT; } 
-//		else { toMove = ChessColor.DARK; }
-//	
-//	String FenPosition = puzzle.get("boardPosition");
-//	char[][] boardPosition = null;
-//	try {
-//		boardPosition = new FenPositionParser().parsePosition(FenPosition);
-//	} catch (FenNotationException e) {
-//		System.out.println(e.getMessage());
-//		return;
-//	}
-//	
-//	String[] moveSet = puzzle.get("moveSet").split("/");
-//	
-//	ChessGame chessGame = new ChessGameBuilder().createGame(boardPosition, toMove);
-//	
-//	// Temp testing
-//	ChessPieceAppender pieceAppender = new ChessPieceAppender(puzzleModeView.getChessboardView());
-//	pieceAppender.appendPosition(chessGame.getBoardRepresentation().getLightPieces());
-//	pieceAppender.appendPosition(chessGame.getBoardRepresentation().getDarkPieces());
-//	
-//	char[][] board = chessGame.getBoardRepresentation().getBoardPosition();
-//	MoveCalculator calc = new MoveCalculator();
-//	Map<String, ChessPiece> pieces = chessGame.getBoardRepresentation().getLightPieces();
-//	for (Map.Entry<String, ChessPiece> entry : pieces.entrySet()) {
-//		ChessPiece piece = entry.getValue();
-//		String position = entry.getKey();
-//		byte file = (byte)Integer.parseInt(position.substring(0, 1));
-//		byte rank = (byte)Integer.parseInt(position.substring(2, 3));
-//		piece.setLegalMoves(calc.calculateLegalMoves(new byte[] {file, rank}, piece.getMoveSets(), piece.getMoveIncrement(), board));
-//	}
-//	
-//	Player player = new Player(ChessColor.LIGHT, null);
-//	puzzleModeView.getChessboardView().setPieceManager(new PieceManager(player, puzzleModeView.getChessboardView()));
-//}

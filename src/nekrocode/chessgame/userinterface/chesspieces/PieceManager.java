@@ -19,6 +19,13 @@ public class PieceManager {
 		squareManager = new SquareManager(this);
 	}
 	
+	
+	public void cleanBoard() {
+		if (squareManager.getMarkedPanels().size() > 0) {
+			squareManager.removeSelection();
+		}
+	}
+	
 	public void handleInput(SquarePanel squarePanel) {
 		ChessPiecePanel piecePanel = squarePanel.getChessPiecePanel();
 		if (piecePanel == null || piecePanel.getChessPiece().getColor() != player.getColor()) { return; }

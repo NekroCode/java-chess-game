@@ -76,6 +76,15 @@ public class ChessboardView extends JPanel {
 		}
 	}
 	
+	public void emptyBoard() {
+		for (List<SquarePanel> list : squarePanels) {
+			for (SquarePanel squarePanel : list) {
+				squarePanel.emptySquare();
+			}
+		}
+		pieceManager.cleanBoard();
+	}
+	
 	private List<List<SquarePanel>> createSquarePanels() {
 		List<List<SquarePanel>> squarePanels = new ArrayList<List<SquarePanel>>();
 		List<SquarePanel> row = new ArrayList<SquarePanel>();

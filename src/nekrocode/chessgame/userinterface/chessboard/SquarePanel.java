@@ -62,6 +62,7 @@ public class SquarePanel extends JPanel {
 	
 	public void emptySquare() {
 		if (getComponentCount() > 0) {
+			chessPiecePanel = null;
 			removeAll();
 			revalidate();
 			repaint();

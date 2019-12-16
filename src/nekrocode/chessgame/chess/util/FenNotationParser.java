@@ -63,7 +63,10 @@ public class FenNotationParser {
 		final int increment = 3;
 		List<Map<String, String>> chessPuzzles = new ArrayList<Map<String, String>>();
 		for (int i = 0; i < size; i+=increment) {
-			chessPuzzles.add(processElements(games.get(i), games.get(i+1), games.get(i+2)));
+			Map<String, String> map = processElements(games.get(i), games.get(i+1), games.get(i+2));
+			if (map.get("boardPosition") != null) {
+				chessPuzzles.add(processElements(games.get(i), games.get(i+1), games.get(i+2)));
+			}
 		}
 		return chessPuzzles;
 	}

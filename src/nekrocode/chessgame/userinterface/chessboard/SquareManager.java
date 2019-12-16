@@ -52,4 +52,8 @@ public class SquareManager {
 		markedPanels.clear();
 	}
 	
+	public List<SquarePanel> getMarkedPanels() {
+		return markedPanels;
+	}
+	
 }

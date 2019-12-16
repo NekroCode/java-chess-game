@@ -30,9 +30,6 @@ import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
  * during the actual parsing of the position in FenPositionParser. Reduce it to once in the future.
  * - Not every FEN value is implemented
  * 
- * WARNING!: There's currently a bug where when, during FEN parsing, entries with invalid positions are still being added,
- * only with the position entry. Fix this at a later point in time.
- * 
  * @author ~
  *
  */
@@ -74,6 +71,7 @@ public class PuzzleManager {
 		updatePlayer(boardRepresentation);
 		drawChessPieces(boardRepresentation);
 		calculateLegalMoves(player.getChessPieces(), boardRepresentation.getBoardPosition());
+		// Temporal for testing
 		endPuzzle();
 	}
 	
@@ -121,6 +119,9 @@ public class PuzzleManager {
 	
 	public void nextPuzzle() {
 		nextBtn.setEnabled(false);
+		if (puzzleNumber > 0) {
+			puzzleModeView.getChessboardView().emptyBoard();
+		}
 		try {
 			puzzleCollection.get(puzzleNumber);
 		} catch (Exception e) {
@@ -137,7 +138,7 @@ public class PuzzleManager {
 		addPuzzleToCollection(parsingManager.parseNotation("puzzles/wtharveycomm8n2.txt"));
 		addPuzzleToCollection(parsingManager.parseNotation("puzzles/wtharveycomm8n4.txt"));
 		addPuzzleToCollection(parsingManager.parseNotation("puzzles/wtharveycomm8n3.txt"));
-		//Collections.shuffle(puzzleCollection);
+		Collections.shuffle(puzzleCollection);
 	}
 	
 	private void addPuzzleToCollection(List<Map<String, String>> puzzles) {
@@ -153,7 +154,7 @@ public class PuzzleManager {
 		pieceAppender.appendPosition(board.getDarkPieces());
 	}
 	
-	// ^
+	// Second method i'd rather move elsewhere
 	private void calculateLegalMoves(Map<String, ChessPiece> pieces, char[][] board) {
 		MoveCalculator calc = new MoveCalculator();
 		for (Map.Entry<String, ChessPiece> entry : pieces.entrySet()) {

@@ -41,6 +41,7 @@ public class PuzzleManager {
 	private int puzzleNumber;
 	private Player player;
 	private ChessPieceAppender pieceAppender;
+	private boolean outOfPuzzles;
 	
 	public PuzzleManager(PuzzleModeView puzzleModeView) {
 		this.puzzleModeView = puzzleModeView;
@@ -51,7 +52,7 @@ public class PuzzleManager {
 		player = new Player();
 		pieceAppender = new ChessPieceAppender(puzzleModeView.getChessboardView());
 		// temp
-		skip();
+		//skip();
 	}
 	
 	/**
@@ -117,6 +118,7 @@ public class PuzzleManager {
 		nextBtn.setEnabled(true);
 	}
 	
+	// I don't like how this method works. Change structure in the future
 	public void nextPuzzle() {
 		nextBtn.setEnabled(false);
 		if (puzzleNumber > 0) {
@@ -125,10 +127,13 @@ public class PuzzleManager {
 		try {
 			puzzleCollection.get(puzzleNumber);
 		} catch (Exception e) {
-			System.out.println("Out of puzzles");
+			System.out.println("Out of puzzles.");
+			outOfPuzzles = true;
 		}
-		startPuzzle(createPuzzle(getNextPuzzle(puzzleNumber)));
-		puzzleNumber++;
+		if (!outOfPuzzles) {
+			startPuzzle(createPuzzle(getNextPuzzle(puzzleNumber)));
+			puzzleNumber++;
+		}
 	}
 	
 	// TODO Needs proper validation and exception handling
@@ -147,14 +152,14 @@ public class PuzzleManager {
 		}
 	}
 	
-	// I don't the following two methods belong in this class.
+	// I don't think the following two methods belong in this class.
 	// Find a better place in the future
 	private void drawChessPieces(BoardRepresentation board) {
 		pieceAppender.appendPosition(board.getLightPieces());
 		pieceAppender.appendPosition(board.getDarkPieces());
 	}
 	
-	// Second method i'd rather move elsewhere
+	// Second method I'd rather move elsewhere
 	private void calculateLegalMoves(Map<String, ChessPiece> pieces, char[][] board) {
 		MoveCalculator calc = new MoveCalculator();
 		for (Map.Entry<String, ChessPiece> entry : pieces.entrySet()) {

@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import nekrocode.chessgame.userinterface.util.GridBagAppender;
 
 /**
- * This class represents the chess puzzle statitic data
+ * This class acts as a visual representation for the puzzle statistic data
  * 
  * TODO: Duplicate code, I know. Will fix it later.
  * 
@@ -24,8 +24,8 @@ public class PuzzleStatisticsPanel extends JPanel {
 	private static final long serialVersionUID = -2559609381708757837L;
 	
 	public PuzzleStatisticsPanel() {
-		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		setLayout(new GridLayout(4, 1));
+		setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+		setLayout(new GridLayout(3, 1));
 		add(buildInfoPanel());
 		add(new JLabel(""));
 		add(buildTimePanel());
@@ -37,9 +37,9 @@ public class PuzzleStatisticsPanel extends JPanel {
 		GridBagConstraints c = new GridBagConstraints();
 		GridBagAppender appender = new GridBagAppender(gridBag, c, panel);
 		panel.setLayout(gridBag);
-		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		
-		JLabel label = new JLabel("Game information");
+		JLabel label = new JLabel("Session information");
 		appender.appendComponent(label, 1, 1, 5, 1);
 		appender.appendComponent(new JLabel("Total played:"), 1, 2, 1, 1);
 		appender.appendComponent(new JLabel("      "), 2, 2, 1, 1);
@@ -55,7 +55,7 @@ public class PuzzleStatisticsPanel extends JPanel {
 		GridBagConstraints c = new GridBagConstraints();
 		GridBagAppender appender = new GridBagAppender(gridBag, c, panel);
 		panel.setLayout(gridBag);
-		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		
 		JLabel label = new JLabel("Time");
 		appender.appendComponent(label, 1, 1, 5, 1);

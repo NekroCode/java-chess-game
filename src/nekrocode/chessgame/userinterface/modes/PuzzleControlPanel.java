@@ -7,11 +7,9 @@ public class PuzzleControlPanel extends JPanel {
 
 	private static final long serialVersionUID = 2570781811224817749L;
 	
-	private PuzzleModeView view;
 	private JButton startBtn, nextBtn;
 	
 	public PuzzleControlPanel(PuzzleModeView view) {
-		this.view = view;
 		startBtn = new JButton("Start");
 		nextBtn = new JButton("Next");
 		startBtn.addActionListener(o -> view.startSession());

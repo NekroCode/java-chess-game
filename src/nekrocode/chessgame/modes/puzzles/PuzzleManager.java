@@ -26,6 +26,8 @@ import nekrocode.chessgame.userinterface.modes.PuzzleModeView;
  * This class manages the course of a chess puzzle session. Many improvements are to be made but for now, I just need to get something working.
  * 
  * TODO Improvements:
+ * - Implementing exception handling for parsing the puzzle files. There currently is NONE.
+ * - Making the code less messy.
  * - The FEN board position notation is being validated twice currently. Once during FenPositionParser work and another time
  * during the actual parsing of the position in FenPositionParser. Reduce it to once in the future.
  * - Not every FEN value is implemented
@@ -52,7 +54,7 @@ public class PuzzleManager {
 		player = new Player();
 		pieceAppender = new ChessPieceAppender(puzzleModeView.getChessboardView());
 		// temp
-		//skip();
+		skip();
 	}
 	
 	/**
@@ -67,8 +69,10 @@ public class PuzzleManager {
 		nextPuzzle();
 	}
 	
+	// TODO Move the line of code responsible for displaying the color to move elsewhere.
 	private void startPuzzle(ChessPuzzle chessPuzzle) {
 		BoardRepresentation boardRepresentation = chessPuzzle.getChessGame().getBoardRepresentation();
+		puzzleModeView.getPuzzleInfoPanel().displayToMove(boardRepresentation.getToMove());
 		updatePlayer(boardRepresentation);
 		drawChessPieces(boardRepresentation);
 		calculateLegalMoves(player.getChessPieces(), boardRepresentation.getBoardPosition());
@@ -129,6 +133,7 @@ public class PuzzleManager {
 		} catch (Exception e) {
 			System.out.println("Out of puzzles.");
 			outOfPuzzles = true;
+			puzzleModeView.getPuzzleInfoPanel().clearToMove();
 		}
 		if (!outOfPuzzles) {
 			startPuzzle(createPuzzle(getNextPuzzle(puzzleNumber)));
@@ -141,8 +146,8 @@ public class PuzzleManager {
 		puzzleCollection = new ArrayList<Map<String, String>>();
 		FenParsingManager parsingManager = new FenParsingManager();
 		addPuzzleToCollection(parsingManager.parseNotation("puzzles/wtharveycomm8n2.txt"));
-		addPuzzleToCollection(parsingManager.parseNotation("puzzles/wtharveycomm8n4.txt"));
 		addPuzzleToCollection(parsingManager.parseNotation("puzzles/wtharveycomm8n3.txt"));
+		addPuzzleToCollection(parsingManager.parseNotation("puzzles/wtharveycomm8n4.txt"));
 		Collections.shuffle(puzzleCollection);
 	}
 	

@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 import nekrocode.chessgame.chess.game.enums.ChessColor;
@@ -37,13 +38,13 @@ public class SquarePanel extends JPanel {
 		setPreferredSize(new Dimension(50, 50));
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				handleInput();
+				handleInput(e);
 			}
 		});
 	}
 	
-	public void handleInput() {
-		chessboardView.manageInput(this);
+	public void handleInput(MouseEvent e) {
+		chessboardView.manageInput(this, e);
 	}
 	
 	public void addChessPiece(ChessPiecePanel chessPiecePanel) {

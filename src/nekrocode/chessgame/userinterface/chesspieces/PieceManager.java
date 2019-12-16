@@ -3,8 +3,8 @@ package nekrocode.chessgame.userinterface.chesspieces;
 import nekrocode.chessgame.chess.pieces.ChessPiece;
 import nekrocode.chessgame.chess.players.Player;
 import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
-import nekrocode.chessgame.userinterface.chessboard.SquareManager;
 import nekrocode.chessgame.userinterface.chessboard.SquarePanel;
+import nekrocode.chessgame.userinterface.chessboard.util.SquareManager;
 
 public class PieceManager {
 	

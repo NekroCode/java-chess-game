@@ -1,8 +1,10 @@
-package nekrocode.chessgame.userinterface.chessboard;
+package nekrocode.chessgame.userinterface.chessboard.util;
 
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+
+import nekrocode.chessgame.userinterface.chessboard.SquarePanel;
 
 public class SquareHighlighter {
 	

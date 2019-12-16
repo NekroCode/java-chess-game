@@ -1,9 +1,11 @@
-package nekrocode.chessgame.userinterface.chessboard;
+package nekrocode.chessgame.userinterface.chessboard.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import nekrocode.chessgame.chess.pieces.ChessPiece;
+import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
+import nekrocode.chessgame.userinterface.chessboard.SquarePanel;
 import nekrocode.chessgame.userinterface.chesspieces.PieceManager;
 
 public class SquareManager {

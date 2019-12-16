@@ -3,12 +3,14 @@ package nekrocode.chessgame.userinterface.chessboard;
 import java.awt.GridLayout;
 import java.awt.ItemSelectable;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import nekrocode.chessgame.chess.board.Chessboard;
 import nekrocode.chessgame.chess.game.enums.ChessColor;
@@ -41,9 +43,13 @@ public class ChessboardView extends JPanel {
 			else { drawLightOrientation(); }
 	}
 	
-	public void manageInput(SquarePanel squarePanel) {
+	public void manageInput(SquarePanel squarePanel, MouseEvent e) {
 		if (pieceManager != null) {
-			pieceManager.handleInput(squarePanel);
+			if (SwingUtilities.isRightMouseButton(e)) {
+				pieceManager.cleanBoard();
+			} else {
+				pieceManager.handleInput(squarePanel);
+			}
 		}
 	}
 	

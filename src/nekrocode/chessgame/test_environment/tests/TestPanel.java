@@ -17,8 +17,8 @@ import nekrocode.chessgame.chess.util.FenNotationException;
 import nekrocode.chessgame.chess.util.FenPositionParser;
 import nekrocode.chessgame.modes.puzzles.PuzzleOpponent;
 import nekrocode.chessgame.userinterface.chessboard.ChessboardView;
-import nekrocode.chessgame.userinterface.chessboard.SquareHighlighter;
 import nekrocode.chessgame.userinterface.chessboard.util.ChessPieceAppender;
+import nekrocode.chessgame.userinterface.chessboard.util.SquareHighlighter;
 import nekrocode.chessgame.userinterface.chesspieces.PieceManager;
 
 /**

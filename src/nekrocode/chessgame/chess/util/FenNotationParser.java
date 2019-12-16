@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
  *   Output should be tested thoroughly to see if any legal move is caught out.
  * 
  * TODO
- * - Better code implementation. Currently in testing stage
+ * - Better code implementation.
  * 
  * @author ~
  *
@@ -79,7 +79,7 @@ public class FenNotationParser {
 		return chessPuzzle;
 	}
 	
-	// I don't like splitting based on an empty whitespace
+	// I don't like splitting based on an empty whitespace.
 	// Or could I at least declare it in a more semantic way?
 	private void processBoardInfo(String boardInfo, Map<String, String> chessPuzzle) {
 		String[] elements = boardInfo.split(" ");
@@ -141,7 +141,7 @@ public class FenNotationParser {
 			"[BRQNK][1-8][a-h][1-8]", // Piece rank move
 			"[BRQNK][1-8]x[a-h][1-8]", // Piece rank capture
 			"[BRQNK][1-8][a-h][1-8]\\+", // Piece rank check
-			"[BRQNK][1-8][a-h][1-8]#", // Piece rank checmkate
+			"[BRQNK][1-8][a-h][1-8]#", // Piece rank checkmate
 			"[BRQNK][1-8]x[a-h][1-8]#", // Piece rank capture + checkmate
 			"[BRQNK][1-8]x[a-h][1-8]\\+", // Piece rank capture + check	
 	};
